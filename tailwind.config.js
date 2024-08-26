@@ -25,6 +25,8 @@ module.exports = {
       'monalisa': '#9277FF',
       'alabaster': '#f8f8f8',
       'miragedeep': '#141625',
+      'oxfordblue': '#373B53',
+      'fiord': '#494E6E',
     },
     extend: {},
   },
