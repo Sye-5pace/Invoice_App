@@ -1,5 +1,21 @@
-<button type="button" class="font-bold text-[.75rem] flex gap-4 items-center">
-  Filter by status
-  <img src="../../../assets/images/icon-arrow-down.svg" class="pb-1" alt="filter-arrow">
-</button>
+<div>
+  <button type="button" class="font-bold text-[.75rem] flex gap-4 items-center" (click)="showFilters()">
+    Filter by status
+    <img [src]="showFilter ? '../../../assets/images/icon-arrow-up.svg' : '../../../assets/images/icon-arrow-down.svg'" class="pb-1" alt="filter-arrow">
+  </button>
+  <div id="filter-options" class="flex flex-col gap-y-2 absolute bg-[#fff] top-[7.85rem] right-[27rem] font-bold justify-center pl-6 rounded-[.5rem] w-[12rem] h-[8rem] drop-shadow-purple" [ngClass]="showFilter ? 'flex' : 'hidden'">
+    <button type="button" class="flex gap-[.8125rem] items-center"  >
+      <input type="checkbox"  class="size-4 rounded-[.125rem] bg-selago" />
+      <label>Draft</label>
+    </button>
+    <button type="button" class="flex gap-[.8125rem] items-center" >
+      <input type="checkbox"  class="size-4 rounded-[.125rem] bg-selago" />
+      <label>Pending</label>
+    </button>
+    <button type="button" class="flex gap-[.8125rem] items-center" >
+      <input type="checkbox"  class="size-4 rounded-[.125rem] bg-selago" />
+      <label>Paid</label>
+    </button>
+  </div>
+</div>
 

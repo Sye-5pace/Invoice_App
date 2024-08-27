@@ -1,0 +1,41 @@
+.drop-shadow-purple {
+  box-shadow: -2px 8px 20px 5px rgba(124, 93, 250, 0.125);
+}
+
+
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  background-color: #DFE3FA;
+}
+
+input[type="checkbox"]:hover{
+  border: 1px solid cornflowerblue;
+}
+
+/* Custom style for checked state */
+input[type="checkbox"]:checked {
+  background-color: cornflowerblue;
+  border-color: cornflowerblue;
+}
+
+
+input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}

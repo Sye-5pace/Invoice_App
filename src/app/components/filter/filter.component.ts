@@ -1,13 +1,22 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-filter',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './filter.component.html',
-  styleUrl: './filter.component.css'
+  styleUrls: ['./filter.component.css']
 })
 
 export class FilterComponent {
+  showFilter: boolean = false;
+  hoverFilter: string | null = null;
   
+
+  showFilters() {
+    this.showFilter = !this.showFilter;
+  }
+
+
 }
