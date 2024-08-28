@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { switchTheme } from '../store/theme/theme.actions';
 import { ITheme } from '../store/theme/theme.reducer';
 import { selectTheme } from '../store/theme/theme.selectors';
-import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
