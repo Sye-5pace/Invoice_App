@@ -14,7 +14,7 @@ export class CreateInvoiceComponent {
   constructor(private modalService: ModalService){}
 
   toggleCreateModal():void{
-    this.modalService.toggle();
+    this.modalService.showCreateModal()
   }
 
 }

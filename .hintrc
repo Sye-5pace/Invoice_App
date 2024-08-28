@@ -12,13 +12,23 @@
     "axe/forms": [
       "default",
       {
-        "label": "off"
+        "label": "off",
+        "select-name": "off"
       }
     ],
     "axe/keyboard": [
       "default",
       {
         "nested-interactive": "off"
+      }
+    ],
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "scrollbar-gutter",
+          "overscroll-behavior-y"
+        ]
       }
     ]
   }

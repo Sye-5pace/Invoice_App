@@ -1,0 +1,112 @@
+<section class="flex flex-col gap-y-12 bg-[#fff] w-[42rem] h-full pt-[3.5rem] pb-8 pl-[9.9375rem] pr-[3.5rem] rounded-tr-[1.25rem] rounded-br-[1.25rem]">
+  @if(editMode){
+    <h1>Invoice id</h1>
+  } @else {
+    <h1 class="font-bold text-[1.5rem]">
+      New Invoice
+    </h1>
+  }
+
+  <div id="invoice-form" class="flex flex-col gap-y-12 scrollable pr-2 text-[.75rem]">
+    <div id="bill-from-div" class="flex flex-col gap-y-3">
+      <h4 class="text-cornflowerblue font-bold">Bill From</h4>
+      <div class="flex flex-col gap-y-6">
+        <div class="flex flex-col gap-y-1">
+          <label for="street-addr" class="font-medium text-[.75rem] text-shipcove">Street Address</label>
+          <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="Street Address">
+        </div>
+        <div class="grid grid-cols-3 gap-4 ">
+          <div class="flex flex-col">
+            <label for="city" class="text-shipcove">City</label>
+            <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="City">
+          </div>
+          <div class="flex flex-col">
+            <label for="city" class="text-shipcove">Post Code</label>
+            <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="Post code">
+          </div>
+          <div class="flex flex-col">
+            <label for="city" class="text-shipcove">City</label>
+            <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="Country">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="bill-to-div" class="flex flex-col gap-y-4">
+      <h4 class="text-cornflowerblue font-bold">Bill To</h4>
+      <div class="flex flex-col gap-y-1">
+        <label for="street-addr" class="font-medium text-[.75rem] text-shipcove">Client's Name</label>
+        <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="Client's name">
+      </div>
+      <div class="flex flex-col gap-y-1">
+        <label for="street-addr" class="font-medium text-[.75rem] text-shipcove">Client's Email</label>
+        <input type="email" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="e.g. email@example.com">
+      </div>
+      <div class="flex flex-col gap-y-1">
+        <label for="street-addr" class="font-medium text-[.75rem] text-shipcove">Street Address</label>
+        <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="Street Address">
+      </div>
+      <div class="grid grid-cols-3 gap-4">
+        <div class="flex flex-col">
+          <label for="city" class="text-shipcove" >City</label>
+          <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem] " placeholder="City">
+        </div>
+        <div class="flex flex-col">
+          <label for="city" class="text-shipcove">Post Code</label>
+          <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="Post code">
+        </div>
+        <div class="flex flex-col">
+          <label for="city" class="text-shipcove">City</label>
+          <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="Country">
+        </div>
+      </div>
+    </div>
+
+    <div id="payment-info" class="flex flex-col gap-y-3">
+      <div class="grid grid-cols-2 gap-6">
+        <div class="flex flex-col">
+          <label for="invoice" class="text-shipcove" >Invoice Date</label>
+          <input type="date" class="font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem] " placeholder="">
+        </div>
+        <div class="flex flex-col">
+          <label for="payment-terms" class="text-shipcove">
+            Payment Terms
+          </label>
+          <div (click)="showTermsOption()"  class="hover:border-cornflowerblue cursor-pointer font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem] flex justify-between items-center pr-2">
+            {{ paymentTerm }}
+            <img class="size-[.5rem]" [src]="showTerms ? '../../../assets/images/icon-arrow-up.svg':'../../../assets/images/icon-arrow-down.svg'" alt="">
+          </div>
+          <div [class]="showTerms ? 'flex':'hidden'" type="text"  class="drop-shadow-normal flex-col absolute bg-[#fff] top-[19.5rem] w-[13rem] cursor-pointer font-bold *:py-2 border border-selago  rounded-[.25rem] " placeholder="Payment terms">
+            <div (click)="selectTerms('Net 1 Day')"  class="hover:text-cornflowerblue cursor-pointer border-selago border-b pl-5  flex justify-start items-center">Net 1 Day</div>
+            <div  (click)="selectTerms('Net 7 Days')" class="hover:text-cornflowerblue cursor-pointer border-selago border-b pl-5  flex justify-start items-center" >Net 7 Days</div>
+            <div  (click)="selectTerms('Net 14 Days')" class=" border-selago border-b pl-5  hover:text-cornflowerblue cursor-pointer flex justify-start items-center">Net 14 Days</div>
+            <div  (click)="selectTerms('Net 30 Days')" class="hover:text-cornflowerblue cursor-pointer pl-5  flex justify-start items-center" >Net 30 Days</div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-y-1">
+        <label for="street-addr" class="font-medium text-[.75rem] text-shipcove">Project Description</label>
+        <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="e.g. Graphic Design Service">
+      </div>
+    </div>
+
+    <div id="item-list-info" class="flex flex-col gap-y-4 text-shipcove">
+      <h4 class="font-bold text-[1.125rem] text-waterloo">Item List</h4>
+      <div class="flex text-shipcove">
+        <p class="w-[13.375rem]">Item Name</p>
+        <p class="w-[2.875rem]">Qty.</p>
+        <p class="w-[6.25rem]">Price</p>
+        <p class="w-[2.8125rem]">Total</p>
+      </div>
+      <button type="button" class="bg-selagolight rounded-[1.5rem] h-12">+ Add New Item</button>
+    </div>
+  </div>
+  <div class=" flex justify-between">
+    <app-form-button [buttonClass]="'bg-selagolight text-shipcove w-[6rem]'" [buttonName]="'Discard'" [buttonEvent]="discardTerms.bind(this)"/>
+    <div class="flex gap-2">
+      <app-form-button [buttonClass]="'bg-oxfordblue text-balihai w-[8.3125rem]'" [buttonName]="'Save as Draft'"/>
+      <app-form-button [buttonClass]="'bg-cornflowerblue text-[#fff] w-[8rem]'" [buttonName]="'Save & Send'"/>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+.scrollable{
+  overflow-y: scroll;
+}
+
+.scrollable::-webkit-scrollbar {
+  scrollbar-gutter: stable both-edges;
+  width: 10px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  background: transparent ;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background: #DFE3FA;
+  border-radius: 10px;
+  background-clip: content-box;
+}
+
+.scrollable::-webkit-scrollbar-thumb:hover {
+  background: #373B53;
+}
+
+
+.drop-shadow-purple {
+  box-shadow: -2px 8px 20px 5px rgba(164, 69, 237, 0.125);
+}
+
+.drop-shadow-normal {
+  box-shadow: -2px 8px 20px 5px rgba(0, 0, 0, 0.125);
+}

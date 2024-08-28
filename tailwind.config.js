@@ -18,6 +18,7 @@ module.exports = {
       'mirage': '#1E2139',
       'ebonyclay': '#252945',
       'selago': '#DFE3FA',
+      'selagolight': '#F9FAFE',
       'balihai': '#888EB0',
       'shipcove': '#7E88C3',
       'vulcan': '#0C0E16',
@@ -27,6 +28,7 @@ module.exports = {
       'miragedeep': '#141625',
       'oxfordblue': '#373B53',
       'fiord': '#494E6E',
+      'waterloo': '#777F98'
     },
     extend: {},
   },
