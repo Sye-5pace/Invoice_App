@@ -72,7 +72,7 @@
           <label for="payment-terms" class="text-shipcove" [class]="themeMode ? 'text-selago':''">
             Payment Terms
           </label>
-          <div (click)="showTermsOption()"  class="hover:border-cornflowerblue cursor-pointer font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem] flex justify-between items-center pr-2" >
+          <div (click)="showTermsOption()"  class="hover:border-cornflowerblue cursor-pointer font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem] flex justify-between items-center pr-2" [class]="themeMode ? 'bg-mirage  border-ebonyclay':''">
             {{ paymentTerm }}
             <img [src]="showTerms ? '../../../assets/images/icon-arrow-up.svg':'../../../assets/images/icon-arrow-down.svg'" alt="">
           </div>

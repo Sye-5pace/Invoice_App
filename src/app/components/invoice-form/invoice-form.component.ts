@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 export class InvoiceFormComponent {
   @Input() editMode:boolean = false;
   @Input() editInvoiceData: any;
-  showTerms:boolean = true;
+  showTerms:boolean = false;
   paymentTerm:string = "Select payment terms";
   itemList:Array<{name:string , qty: number, price: number}>= [];
   themeMode: boolean= false

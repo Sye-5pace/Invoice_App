@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ModalService extends ToggleService{
   private openDeleteModal = new BehaviorSubject<boolean>(false);
-  private openCreateModal = new BehaviorSubject<boolean>(true);
+  private openCreateModal = new BehaviorSubject<boolean>(false);
 
   openCreateModal$ = this.openCreateModal.asObservable();
   openDeleteModal$ = this.openDeleteModal.asObservable();
