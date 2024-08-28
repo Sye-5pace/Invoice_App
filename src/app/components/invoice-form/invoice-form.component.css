@@ -29,3 +29,9 @@
 .drop-shadow-normal {
   box-shadow: -2px 8px 20px 5px rgba(0, 0, 0, 0.125);
 }
+
+/* class="drop-shadow-normal flex-col absolute top-[18.5rem] w-[13rem] cursor-pointer font-bold py-2 border border-selago rounded-[.25rem]" */
+
+#terms-options{
+  font-weight: 700;
+}

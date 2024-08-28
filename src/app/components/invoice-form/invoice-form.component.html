@@ -72,16 +72,29 @@
           <label for="payment-terms" class="text-shipcove" [class]="themeMode ? 'text-selago':''">
             Payment Terms
           </label>
-          <div (click)="showTermsOption()"  class="hover:border-cornflowerblue cursor-pointer font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem] flex justify-between items-center pr-2" [class]="themeMode ? 'border-ebonyclay bg-mirage':''">
+          <div (click)="showTermsOption()"  class="hover:border-cornflowerblue cursor-pointer font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem] flex justify-between items-center pr-2" >
             {{ paymentTerm }}
             <img [src]="showTerms ? '../../../assets/images/icon-arrow-up.svg':'../../../assets/images/icon-arrow-down.svg'" alt="">
           </div>
-          <div id="terms-options" [class]="showTerms ? 'flex':'hidden'" type="text"  class="drop-shadow-normal flex-col absolute bg-[#fff] top-[18.5rem] w-[13rem] cursor-pointer font-bold *:py-2 border border-selago  rounded-[.25rem] " placeholder="Payment terms">
-            <div (click)="selectTerms('Net 1 Day')"  class="hover:text-cornflowerblue cursor-pointer border-selago border-b pl-5  flex justify-start items-center">Net 1 Day</div>
-            <div  (click)="selectTerms('Net 7 Days')" class="hover:text-cornflowerblue cursor-pointer border-selago border-b pl-5  flex justify-start items-center" >Net 7 Days</div>
-            <div  (click)="selectTerms('Net 14 Days')" class=" border-selago border-b pl-5  hover:text-cornflowerblue cursor-pointer flex justify-start items-center">Net 14 Days</div>
-            <div  (click)="selectTerms('Net 30 Days')" class="hover:text-cornflowerblue cursor-pointer pl-5  flex justify-start items-center" >Net 30 Days</div>
+          <div
+            [ngClass]="{'bg-[#fff]': !themeMode, 'bg-ebonyclay text-white': themeMode, 'flex': showTerms, 'hidden': !showTerms}"
+            id="terms-options"
+            class="drop-shadow-normal flex-col absolute top-[18.5rem] w-[13.75rem] cursor-pointer font-bold py-2 rounded-[.25rem] *:py-2"
+          >
+            <div (click)="selectTerms('Net 1 Day')" class="hover:text-cornflowerblue cursor-pointer border-selago border-b pl-5 flex justify-start items-center" [class]="themeMode ? 'border-miragedeep text-selago':''">
+              Net 1 Day
+            </div>
+            <div (click)="selectTerms('Net 7 Days')" class="hover:text-cornflowerblue cursor-pointer border-selago border-b pl-5 flex justify-start items-center" [class]="themeMode ? 'border-miragedeep text-selago':''">
+              Net 7 Days
+            </div>
+            <div (click)="selectTerms('Net 14 Days')" class="border-selago border-b pl-5 hover:text-cornflowerblue cursor-pointer flex justify-start items-center" [class]="themeMode ? 'border-miragedeep text-selago':''">
+              Net 14 Days
+            </div>
+            <div (click)="selectTerms('Net 30 Days')" class="hover:text-cornflowerblue cursor-pointer pl-5 flex justify-start items-center" [class]="themeMode ? 'border-miragedeep text-selago':''">
+              Net 30 Days
+            </div>
           </div>
+
         </div>
       </div>
       <div class="flex flex-col gap-y-1">

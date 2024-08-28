@@ -3,18 +3,19 @@ import { FormButtonComponent } from "../reusables/form-button/form-button.compon
 import { ModalService } from '../../services/modal.service';
 import { FormsModule } from '@angular/forms';
 import { ThemeService } from '../../services/theme.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-invoice-form',
   standalone: true,
-  imports: [FormButtonComponent,FormsModule],
+  imports: [FormButtonComponent,FormsModule,CommonModule],
   templateUrl: './invoice-form.component.html',
   styleUrl: './invoice-form.component.css'
 })
 export class InvoiceFormComponent {
   @Input() editMode:boolean = false;
   @Input() editInvoiceData: any;
-  showTerms:boolean = false;
+  showTerms:boolean = true;
   paymentTerm:string = "Select payment terms";
   itemList:Array<{name:string , qty: number, price: number}>= [];
   themeMode: boolean= false
@@ -48,4 +49,6 @@ export class InvoiceFormComponent {
   removeListItem(index: number): void{
     this.itemList.splice(index, 1);
   }
+
+
 }
