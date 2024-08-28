@@ -1,4 +1,4 @@
-<section class="flex flex-col gap-y-12 bg-[#fff] w-[42rem] h-full pt-[3.5rem] pb-8 pl-[9.9375rem] pr-[3.5rem] rounded-tr-[1.25rem] rounded-br-[1.25rem]">
+<section class="flex flex-col gap-y-12 bg-[#fff] w-[43rem] h-full pt-[3.5rem] pb-8 pl-[9.9375rem] pr-[3rem] rounded-tr-[1.25rem] rounded-br-[1.25rem]" [class]="themeMode ? 'bg-miragedeep':'bg-[#fff]'">
   @if(editMode){
     <h1>Invoice id</h1>
   } @else {
@@ -12,21 +12,21 @@
       <h4 class="text-cornflowerblue font-bold">Bill From</h4>
       <div class="flex flex-col gap-y-6">
         <div class="flex flex-col gap-y-1">
-          <label for="street-addr" class="font-medium text-[.75rem] text-shipcove">Street Address</label>
-          <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="Street Address">
+          <label for="street-addr" class="font-medium text-[.75rem] text-shipcove" [class]="themeMode ? 'text-selago':''">Street Address</label>
+          <input type="text" class="font-bold py-4 px-5 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage border-ebonyclay':''" placeholder="Street Address">
         </div>
         <div class="grid grid-cols-3 gap-4 ">
           <div class="flex flex-col">
-            <label for="city" class="text-shipcove">City</label>
-            <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="City">
+            <label for="city" class="text-shipcove" [class]="themeMode ? 'text-selago':''">City</label>
+            <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage border-ebonyclay':''" placeholder="City">
           </div>
           <div class="flex flex-col">
-            <label for="city" class="text-shipcove">Post Code</label>
-            <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="Post code">
+            <label for="post-code" class="text-shipcove" [class]="themeMode ? 'text-selago':''">Post Code</label>
+            <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage border-ebonyclay':''" placeholder="Post code">
           </div>
           <div class="flex flex-col">
-            <label for="city" class="text-shipcove">City</label>
-            <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="Country">
+            <label for="country" class="text-shipcove" [class]="themeMode ? 'text-selago':''">Country</label>
+            <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage border-ebonyclay':''" placeholder="Country">
           </div>
         </div>
       </div>
@@ -35,29 +35,29 @@
     <div id="bill-to-div" class="flex flex-col gap-y-4">
       <h4 class="text-cornflowerblue font-bold">Bill To</h4>
       <div class="flex flex-col gap-y-1">
-        <label for="street-addr" class="font-medium text-[.75rem] text-shipcove">Client's Name</label>
-        <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="Client's name">
+        <label for="client's-name" class="font-medium text-[.75rem] text-shipcove" [class]="themeMode ? 'text-selago':''">Client's Name</label>
+        <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage border-ebonyclay':''" placeholder="Client's name">
       </div>
       <div class="flex flex-col gap-y-1">
-        <label for="street-addr" class="font-medium text-[.75rem] text-shipcove">Client's Email</label>
-        <input type="email" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="e.g. email@example.com">
+        <label for="client-email" class="font-medium text-[.75rem] text-shipcove" [class]="themeMode ? 'text-selago':''">Client's Email</label>
+        <input type="email" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage border-ebonyclay':''" placeholder="e.g. email@example.com">
       </div>
       <div class="flex flex-col gap-y-1">
-        <label for="street-addr" class="font-medium text-[.75rem] text-shipcove">Street Address</label>
-        <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="Street Address">
+        <label for="street-addr" class="font-medium text-[.75rem] text-shipcove" [class]="themeMode ? 'text-selago':''">Street Address</label>
+        <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage border-ebonyclay':''" placeholder="Street Address">
       </div>
       <div class="grid grid-cols-3 gap-4">
         <div class="flex flex-col">
-          <label for="city" class="text-shipcove" >City</label>
-          <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem] " placeholder="City">
+          <label for="city" class="text-shipcove" [class]="themeMode ? 'text-selago':''">City</label>
+        <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem] "  [class]="themeMode ? 'bg-mirage border-ebonyclay':''" placeholder="City">
         </div>
         <div class="flex flex-col">
-          <label for="city" class="text-shipcove">Post Code</label>
-          <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="Post code">
+          <label for="post-code" class="text-shipcove" [class]="themeMode ? 'text-selago':''">Post Code</label>
+          <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="Post code">
         </div>
         <div class="flex flex-col">
-          <label for="city" class="text-shipcove">City</label>
-          <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="Country">
+          <label for="country" class="text-shipcove" [class]="themeMode ? 'text-selago':''">Country</label>
+          <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="Country">
         </div>
       </div>
     </div>
@@ -65,14 +65,14 @@
     <div id="payment-info" class="flex flex-col gap-y-3">
       <div class="grid grid-cols-2 gap-6">
         <div class="flex flex-col">
-          <label for="invoice" class="text-shipcove" >Invoice Date</label>
-          <input type="date" class="font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem] " placeholder="">
+          <label for="invoice-date" class="text-shipcove" [class]="themeMode ? 'text-selago':''">Invoice Date</label>
+          <input type="date" class="font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]" [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="">
         </div>
         <div id="terms-container" class="flex flex-col">
-          <label for="payment-terms" class="text-shipcove">
+          <label for="payment-terms" class="text-shipcove" [class]="themeMode ? 'text-selago':''">
             Payment Terms
           </label>
-          <div (click)="showTermsOption()"  class="hover:border-cornflowerblue cursor-pointer font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem] flex justify-between items-center pr-2">
+          <div (click)="showTermsOption()"  class="hover:border-cornflowerblue cursor-pointer font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem] flex justify-between items-center pr-2" [class]="themeMode ? 'border-ebonyclay bg-mirage':''">
             {{ paymentTerm }}
             <img [src]="showTerms ? '../../../assets/images/icon-arrow-up.svg':'../../../assets/images/icon-arrow-down.svg'" alt="">
           </div>
@@ -85,14 +85,14 @@
         </div>
       </div>
       <div class="flex flex-col gap-y-1">
-        <label for="street-addr" class="font-medium text-[.75rem] text-shipcove">Project Description</label>
-        <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]" placeholder="e.g. Graphic Design Service">
+        <label for="project-desc" class="font-medium text-[.75rem] text-shipcove" [class]="themeMode ? 'text-selago':''">Project Description</label>
+        <input type="text" class="font-bold py-4 pl-5 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage border-ebonyclay':''" placeholder="e.g. Graphic Design Service">
       </div>
     </div>
 
     <div id="item-list-info" class="flex flex-col gap-y-4 text-shipcove">
       <h4 class="font-bold text-[1.125rem] text-waterloo">Item List</h4>
-      <div class="flex gap-1 text-shipcove">
+      <div class="flex gap-1 text-shipcove" [class]="themeMode ? 'text-selago':''">
         <p class="w-[10rem]">Item Name</p>
         <p class="w-[2.875rem]">Qty.</p>
         <p class="w-[6.25rem]">Price</p>
@@ -102,9 +102,9 @@
         @for( item of itemList; track item.name; let i = $index ){
           <div class="flex gap-[2rem] items-center">
             <div class="flex gap-2 items-center">
-              <input [(ngModel)]="item.name" class="w-[9rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]" placeholder="Item Name">
-              <input type="text" [(ngModel)]="item.qty" class="w-[2.875rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]" placeholder="Qty.">
-              <input type="text" [(ngModel)]="item.price" class="w-[6.25rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]" placeholder="Price">
+              <input [(ngModel)]="item.name" class="w-[9rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="Item Name">
+              <input type="text" [(ngModel)]="item.qty" class="w-[2.875rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="Qty.">
+              <input type="text" [(ngModel)]="item.price" class="w-[6.25rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="Price">
               <p class="w-[2.8125rem]">$0.00</p>
             </div>
             <button (click)="removeListItem(i)" type="button">
@@ -113,7 +113,9 @@
           </div>
         }
       </div>
-      <button (click)="addListItem()" type="button" class="bg-selagolight rounded-[1.5rem] h-12">+ Add New Item</button>
+      <button  [class]="themeMode ? 'bg-ebonyclay':''"  (click)="addListItem()" type="button" class="bg-selagolight rounded-[1.5rem] h-12 font-bold">
+        + Add New Item
+      </button>
     </div>
   </div>
   <div class=" flex justify-between">

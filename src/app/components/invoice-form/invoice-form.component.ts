@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormButtonComponent } from "../reusables/form-button/form-button.component";
 import { ModalService } from '../../services/modal.service';
 import { FormsModule } from '@angular/forms';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-invoice-form',
@@ -16,13 +17,21 @@ export class InvoiceFormComponent {
   showTerms:boolean = false;
   paymentTerm:string = "Select payment terms";
   itemList:Array<{name:string , qty: number, price: number}>= [];
+  themeMode: boolean= false
 
- constructor(private modalService: ModalService){}
+  constructor(private modalService: ModalService
+    ,private themeService: ThemeService){}
 
+  ngOnInit(){
+    this.themeService.mode$?.subscribe(
+      mode => this.themeMode = mode
+    );
+  }
 
   showTermsOption(){
     this.showTerms =!this.showTerms;
   }
+
   selectTerms(term: any){
     this.paymentTerm = term
   }
@@ -35,7 +44,7 @@ export class InvoiceFormComponent {
   addListItem():void{
     this.itemList.push({ name: '', qty: 0, price: 0 });
   }
-  
+
   removeListItem(index: number): void{
     this.itemList.splice(index, 1);
   }
