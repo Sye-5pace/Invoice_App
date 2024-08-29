@@ -13,11 +13,11 @@ import { CommonModule } from '@angular/common';
 })
 
 export class InvoiceListComponent {
-  // invoiceList$!: Observable<IInvoice[]>;
+  invoiceList$!: Observable<IInvoice[]>;
   constructor(private invoiceOps: InvoiceOpsFacadeService){}
 
   ngOnInit():void {
     this.invoiceOps.loadInvoices();
-    // this.invoiceList$ = this.invoiceOps.invoices$;
+    this.invoiceList$ = this.invoiceOps.filteredInvoices$;
   }
 }
