@@ -11,6 +11,7 @@ import { ThemeService } from '../../services/theme.service';
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.css']
 })
+
 export class FilterComponent implements OnInit {
   showFilter: boolean = false;
   hoverFilter: string | null = null;
@@ -24,16 +25,16 @@ export class FilterComponent implements OnInit {
   ) {
 
     this.filterForm = this.fb.group({
-      Draft: [true],
-      Pending: [true],
-      Paid: [true]
+      Draft: [false],
+      Pending: [false],
+      Paid: [false]
     });
   }
 
   ngOnInit() {
     this.themeService.mode$?.subscribe(mode => (this.themeMode = mode));
     this.filterForm.valueChanges.subscribe(filters => {
-      this.invoiceOps.applyFilters(filters);
+      this.invoiceOps.updateFilters(filters);
     });
   }
 

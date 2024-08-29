@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, of, combineLatest } from 'rxjs';
+import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IInvoice } from './../invoices';
 import { InvoiceState } from '../store/invoices/invoices.reducer';
@@ -11,37 +11,39 @@ import { loadInvoices } from '../store/invoices/invoices.actions';
   providedIn: 'root'
 })
 export class InvoiceOpsFacadeService {
-  invoices$: Observable<IInvoice[]> = this.store.select(selectAllInvoices);
-  filteredInvoices$: Observable<IInvoice[]> = of([]);
+  private filtersSubject = new BehaviorSubject<{ [key: string]: boolean }>({
+    Draft: false,
+    Pending: false,
+    Paid: false
+  });
 
-  constructor(private store: Store<InvoiceState>) {
-    this.filteredInvoices$ = combineLatest([
-      this.store.select(selectAllInvoices),
-      of({ Draft: false, Pending: false, Paid: false })
-    ]).pipe(
-      map(([invoices, filters]) => this.filterInvoices(invoices, filters))
-    );
-  }
+  invoices$ = this.store.select(selectAllInvoices);
+  filters$ = this.filtersSubject.asObservable();
+
+  filteredInvoices$: Observable<IInvoice[]> = combineLatest([this.invoices$, this.filters$]).pipe(
+    map(([invoices, filters]) => {
+      const activeFilters = Object.entries(filters)
+        .filter(([_, isActive]) => isActive)
+        .map(([status]) => status.toLowerCase());
+
+      if (activeFilters.length === 0) {
+        return [];
+        // return invoices;
+      }
+
+      return invoices.filter(invoice =>
+        activeFilters.includes(invoice.status.toLowerCase())
+      );
+    })
+  );
+
+  constructor(private store: Store<InvoiceState>) {}
 
   loadInvoices(): void {
     this.store.dispatch(loadInvoices());
   }
 
-  applyFilters(filters: { [key: string]: boolean }): void {
-    this.filteredInvoices$ = combineLatest([
-      this.store.select(selectAllInvoices),
-      of(filters)
-    ]).pipe(
-      map(([invoices, filters]) => this.filterInvoices(invoices, filters))
-    );
-  }
-
-  private filterInvoices(invoices: IInvoice[], filters: { [key: string]: boolean }): IInvoice[] {
-    if (!invoices) return [];
-    const activeFilters = Object.keys(filters).filter(key => filters[key]);
-
-    if (activeFilters.length === 0) return invoices;
-
-    return invoices.filter(invoice => activeFilters.includes(invoice.status));
+  updateFilters(newFilters: { [key: string]: boolean }): void {
+    this.filtersSubject.next(newFilters);
   }
 }
