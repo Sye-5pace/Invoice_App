@@ -1,13 +1,13 @@
-import {  ActionReducerMap } from '@ngrx/store';
-import * as theme from '../theme/theme.reducer'
-
+import { ActionReducerMap } from '@ngrx/store';
+import * as invoices from '../invoices/invoices.reducer';
+import * as theme from '../theme/theme.reducer';
 
 export interface AppState {
-  theme: theme.ITheme
+  invoices: invoices.InvoicesState;
+  theme: theme.ITheme;
 }
 
 export const appReducers: ActionReducerMap<AppState> = {
-  theme: theme.themeReducer
+  invoices: invoices.invoicesReducer,
+  theme: theme.themeReducer,
 };
-
-
