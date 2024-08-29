@@ -22,11 +22,11 @@ export class FilterComponent implements OnInit {
     private themeService: ThemeService,
     private invoiceOps: InvoiceOpsFacadeService
   ) {
-    // Initialize the form group with default checkbox values
+
     this.filterForm = this.fb.group({
-      Draft: [false],
-      Pending: [false],
-      Paid: [false]
+      Draft: [true],
+      Pending: [true],
+      Paid: [true]
     });
   }
 
