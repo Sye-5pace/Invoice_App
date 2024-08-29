@@ -3,11 +3,11 @@ import * as invoices from '../invoices/invoices.reducer';
 import * as theme from '../theme/theme.reducer';
 
 export interface AppState {
-  invoices: invoices.InvoicesState;
+  invoices: invoices.InvoiceState;
   theme: theme.ITheme;
 }
 
 export const appReducers: ActionReducerMap<AppState> = {
-  invoices: invoices.invoicesReducer,
+  invoices: invoices.invoiceReducer,
   theme: theme.themeReducer,
 };

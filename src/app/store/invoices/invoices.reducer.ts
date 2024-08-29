@@ -1,27 +1,38 @@
 import { createReducer, on } from '@ngrx/store';
-import { IInvoice,  invoiceAdapter } from './invoice.model'
 import { loadInvoices, loadInvoicesSuccess, loadInvoicesFailure } from './invoices.actions';
-import { EntityState } from '@ngrx/entity';
+import { IInvoice } from './invoice.model';
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
-export interface InvoicesState extends EntityState<IInvoice> {
+export interface InvoiceState extends EntityState<IInvoice> {
   loading: boolean;
   error: string | null;
 }
 
-export const initialState: InvoicesState = invoiceAdapter.getInitialState({
+export const adapter: EntityAdapter<IInvoice> = createEntityAdapter<IInvoice>();
+
+export const initialState: InvoiceState = adapter.getInitialState({
   loading: false,
   error: null,
 });
 
-export const reducer = createReducer(
+export const invoiceReducer = createReducer(
   initialState,
+  on(loadInvoices, (state) => ({
+    ...state,
+    loading: true,
+  })),
+  on(loadInvoicesSuccess, (state, { invoices }) =>
+    adapter.setAll(invoices, {
+      ...state,
+      loading: false,
+      error: null,
+    })
+  ),
+  on(loadInvoicesFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+  }))
 );
 
-export const invoicesReducer = createReducer(
-  initialState,
-  on(loadInvoices, (state) => ({ ...state, loading: true })),
-  on(loadInvoicesSuccess, (state, { invoices }) =>
-    invoiceAdapter.setAll(invoices, { ...state, loading: false, error: null })
-  ),
-  on(loadInvoicesFailure, (state, { error }) => ({ ...state, loading: false, error }))
-);
+export const { selectAll, selectEntities, selectIds, selectTotal } = adapter.getSelectors();

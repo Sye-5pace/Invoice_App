@@ -3,6 +3,7 @@ import { InvoiceOpsFacadeService } from '../../services/invoice-ops-facade.servi
 import { IInvoice } from '../../invoices';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-invoice-list',
@@ -14,10 +15,17 @@ import { CommonModule } from '@angular/common';
 
 export class InvoiceListComponent {
   invoiceList$!: Observable<IInvoice[]>;
-  constructor(private invoiceOps: InvoiceOpsFacadeService){}
+  themeMode: boolean = false;
+
+  constructor(private invoiceOps: InvoiceOpsFacadeService,
+    private themeService: ThemeService
+  ){}
 
   ngOnInit():void {
     this.invoiceOps.loadInvoices();
     this.invoiceList$ = this.invoiceOps.filteredInvoices$;
+    this.themeService.mode$?.subscribe(
+      mode => this.themeMode = mode
+    );
   }
 }

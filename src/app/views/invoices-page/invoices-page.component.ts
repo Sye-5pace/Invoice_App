@@ -11,7 +11,8 @@ import { InvoiceModalComponent } from "../../components/reusables/invoice-modal/
   styleUrl: './invoices-page.component.css'
 })
 
+
 export class InvoicesPageComponent {
 
-  
+
 }

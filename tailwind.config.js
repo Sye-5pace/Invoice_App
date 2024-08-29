@@ -28,7 +28,9 @@ module.exports = {
       'miragedeep': '#141625',
       'oxfordblue': '#373B53',
       'fiord': '#494E6E',
-      'waterloo': '#777F98'
+      'waterloo': '#777F98',
+      'shamrock':'#33D69F',
+      'pizazz':'#FF8F00'
     },
     extend: {},
   },

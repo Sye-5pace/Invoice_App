@@ -1,20 +1,19 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { InvoicesState } from './invoices.reducer';
-import { selectAll } from './invoice.model';
+import { InvoiceState, selectAll } from './invoices.reducer';
 
-export const selectInvoicesState = createFeatureSelector<InvoicesState>('invoices');
+export const selectInvoiceState = createFeatureSelector<InvoiceState>('invoices');
 
-export const selectInvoices = createSelector(
-  selectInvoicesState,
+export const selectAllInvoices = createSelector(
+  selectInvoiceState,
   selectAll
 );
 
 export const selectInvoicesLoading = createSelector(
-  selectInvoicesState,
-  (state) => state.loading
+  selectInvoiceState,
+  (state: InvoiceState) => state.loading
 );
 
 export const selectInvoicesError = createSelector(
-  selectInvoicesState,
-  (state) => state.error
+  selectInvoiceState,
+  (state: InvoiceState) => state.error
 );
