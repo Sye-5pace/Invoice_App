@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { InvoiceSettingsComponent } from "../../components/invoice-settings/invoice-settings.component";
 import { InvoiceListComponent } from "../../components/invoice-list/invoice-list.component";
 import { InvoiceModalComponent } from "../../components/reusables/invoice-modal/invoice-modal.component";
-import { InvoiceOpsFacadeService } from '../../services/invoice-ops-facade.service';
 
 @Component({
   selector: 'app-invoices-page',
@@ -13,11 +12,6 @@ import { InvoiceOpsFacadeService } from '../../services/invoice-ops-facade.servi
 })
 
 export class InvoicesPageComponent {
+
   
-  constructor(private invoiceOps: InvoiceOpsFacadeService){}
-
-  ngOnInit():void {
-    this.invoiceOps.loadInvoices();
-  }
-
 }
