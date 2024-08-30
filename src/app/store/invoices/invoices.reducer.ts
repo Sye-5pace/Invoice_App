@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { loadInvoices, loadInvoicesSuccess, loadInvoicesFailure } from './invoices.actions';
+import { loadInvoices, loadInvoicesSuccess, loadInvoicesFailure, addInvoice, editInvoice, deleteInvoice } from './invoices.actions';
 import { IInvoice } from './invoice.model';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
@@ -32,7 +32,16 @@ export const invoiceReducer = createReducer(
     ...state,
     loading: false,
     error,
-  }))
+  })),
+  on(addInvoice, (state, { invoice }) =>
+    adapter.addOne(invoice, state)
+  ),
+  on(editInvoice, (state, { invoice }) =>
+    adapter.updateOne({ id: invoice.id, changes: invoice }, state)
+  ),
+  on(deleteInvoice, (state, { id }) =>
+    adapter.removeOne(id, state)
+  )
 );
 
 export const { selectAll, selectEntities, selectIds, selectTotal } = adapter.getSelectors();

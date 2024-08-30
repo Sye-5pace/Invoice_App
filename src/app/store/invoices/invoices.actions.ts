@@ -10,3 +10,18 @@ export const loadInvoicesFailure = createAction(
   '[Invoice] Load Invoices Failure',
   props<{ error: any }>()
 );
+
+export const addInvoice = createAction(
+  '[Invoice] Add Invoice'
+  , props<{ invoice: IInvoice }>()
+);
+
+export const editInvoice = createAction(
+  '[Invoice] Edit Invoice'
+  , props<{ invoice: IInvoice }>()
+);
+
+export const deleteInvoice = createAction(
+  '[Invoices] Delete Invoice'
+  , props<{ id: string }>()
+);

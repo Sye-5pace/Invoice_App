@@ -6,6 +6,7 @@ import { IInvoice } from './../invoices';
 import { InvoiceState } from '../store/invoices/invoices.reducer';
 import { selectAllInvoices } from './../store/invoices/invoices.selectors';
 import { loadInvoices } from '../store/invoices/invoices.actions';
+import { ModalService } from './modal.service';
 
 @Injectable({
   providedIn: 'root'
@@ -37,10 +38,14 @@ export class InvoiceOpsFacadeService {
     })
   );
 
-  constructor(private store: Store<InvoiceState>) {}
+  constructor(private store: Store<InvoiceState>, private modalService: ModalService) {}
 
   loadInvoices(): void {
     this.store.dispatch(loadInvoices());
+  }
+
+  discard(){
+    this.modalService.hideCreateModal()
   }
 
   updateFilters(newFilters: { [key: string]: boolean }): void {

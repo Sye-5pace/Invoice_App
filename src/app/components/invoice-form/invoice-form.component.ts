@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { FormButtonComponent } from "../reusables/form-button/form-button.component";
-import { ModalService } from '../../services/modal.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, FormArray, Validators } from '@angular/forms';
 import { ThemeService } from '../../services/theme.service';
 import { CommonModule } from '@angular/common';
+import { InvoiceOpsFacadeService } from '../../services/invoice-ops-facade.service';
 
 @Component({
   selector: 'app-invoice-form',
@@ -24,8 +24,9 @@ export class InvoiceFormComponent {
   invoiceForm!: FormGroup;
 
 
-  constructor(private modalService: ModalService
-    ,private themeService: ThemeService, private fb:FormBuilder){}
+  constructor(private themeService: ThemeService,
+    private invoiceOps: InvoiceOpsFacadeService,
+    private fb:FormBuilder){}
 
   ngOnInit(){
     this.themeService.mode$?.subscribe(
@@ -56,8 +57,6 @@ export class InvoiceFormComponent {
       termsOption: ['', Validators.required],
       selectedTerm: [''],
       items: this.fb.array([this.createItem()]),
-
-
     })
     this.invoiceFormList = this.invoiceForm.get('invoices') as FormArray
   }
@@ -79,9 +78,9 @@ export class InvoiceFormComponent {
     this.invoiceForm.get('selectedTerm')?.setValue(term)
   }
 
-  // must go into invoice-form-ops
+
   discardTerms(){
-    this.modalService.hideCreateModal()
+    this.invoiceOps.discard()
   }
 
   addListItem():void{
