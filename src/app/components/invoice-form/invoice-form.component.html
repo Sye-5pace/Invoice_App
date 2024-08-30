@@ -8,7 +8,7 @@
   }
 
   <form [formGroup]="invoiceForm" id="invoice-form" class="flex flex-col gap-y-12 scrollable pr-2 text-[.75rem]">
-    <div formGroupName="billFrom"  id="bill-from-div" class="flex flex-col gap-y-3">
+    <div formGroupName="billForm"  id="bill-from-div" class="flex flex-col gap-y-3">
       <h4 class="text-cornflowerblue font-bold">Bill From</h4>
       <div class="flex flex-col gap-y-6">
         <div class="flex flex-col gap-y-1">
@@ -81,18 +81,18 @@
             id="terms-options"
             class="drop-shadow-normal flex-col absolute top-[18.5rem] w-[13.75rem] cursor-pointer font-bold py-2 rounded-[.25rem] *:py-2"
           >
-            <div (click)="selectTerms('Net 1 Day')" class="hover:text-cornflowerblue cursor-pointer border-selago border-b pl-5 flex justify-start items-center" [class]="themeMode ? 'border-miragedeep text-selago':''">
+            <option (click)="selectTerms('Net 1 Day')" class="hover:text-cornflowerblue cursor-pointer border-selago border-b pl-5 flex justify-start items-center" [class]="themeMode ? 'border-miragedeep text-selago':''">
               Net 1 Day
-            </div>
-            <div (click)="selectTerms('Net 7 Days')" class="hover:text-cornflowerblue cursor-pointer border-selago border-b pl-5 flex justify-start items-center" [class]="themeMode ? 'border-miragedeep text-selago':''">
+            </option>
+            <option (click)="selectTerms('Net 7 Days')" class="hover:text-cornflowerblue cursor-pointer border-selago border-b pl-5 flex justify-start items-center" [class]="themeMode ? 'border-miragedeep text-selago':''">
               Net 7 Days
-            </div>
-            <div (click)="selectTerms('Net 14 Days')" class="border-selago border-b pl-5 hover:text-cornflowerblue cursor-pointer flex justify-start items-center" [class]="themeMode ? 'border-miragedeep text-selago':''">
+            </option>
+            <option (click)="selectTerms('Net 14 Days')" class="border-selago border-b pl-5 hover:text-cornflowerblue cursor-pointer flex justify-start items-center" [class]="themeMode ? 'border-miragedeep text-selago':''">
               Net 14 Days
-            </div>
-            <div (click)="selectTerms('Net 30 Days')" class="hover:text-cornflowerblue cursor-pointer pl-5 flex justify-start items-center" [class]="themeMode ? 'border-miragedeep text-selago':''">
+            </option>
+            <option (click)="selectTerms('Net 30 Days')" class="hover:text-cornflowerblue cursor-pointer pl-5 flex justify-start items-center" [class]="themeMode ? 'border-miragedeep text-selago':''">
               Net 30 Days
-            </div>
+            </option>
           </div>
         </div>
       </div>
@@ -113,7 +113,7 @@
       <div class="flex flex-col gap-y-[1.125rem]">
         @for( item of itemList; track item.name; let i = $index ){
           <div class="flex gap-[2rem] items-center">
-            <div formGroupName="items"  class="flex gap-2 items-center">
+            <div formGroupName="i"  class="flex gap-2 items-center">
               <input formControlName="name"  type="text" [(ngModel)]="item.name" class="w-[9rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="Item Name">
               <input formControlName="qty"   type="text" [(ngModel)]="item.qty" class="w-[2.875rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="Qty.">
               <input formControlName="price"   type="text" [(ngModel)]="item.price" class="w-[6.25rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="Price">

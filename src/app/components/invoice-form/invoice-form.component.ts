@@ -53,10 +53,13 @@ export class InvoiceFormComponent {
       invoiceDate:['', Validators.required],
       termsPayment:['', Validators.required],
       projectDescription:['', Validators.required],
-      items: this.fb.array([this.createItem()])
+      termsOption: ['', Validators.required],
+      selectedTerm: [''],
+      items: this.fb.array([this.createItem()]),
+
 
     })
-    this.invoiceFormList = this.invoiceFormList.get('invoices') as FormArray
+    this.invoiceFormList = this.invoiceForm.get('invoices') as FormArray
   }
 
   createItem(){
@@ -64,7 +67,6 @@ export class InvoiceFormComponent {
       name: ['', Validators.required],
       qty: [0, [Validators.required,Validators.pattern('^[0-9]*$')]],
       price: [0, [Validators.required, Validators.pattern('^[0-9]+(.[0-9]{1,2})?$')]],
-
     })
   }
 
@@ -74,6 +76,7 @@ export class InvoiceFormComponent {
 
   selectTerms(term: any){
     this.paymentTerm = term
+    this.invoiceForm.get('selectedTerm')?.setValue(term)
   }
 
   // must go into invoice-form-ops
