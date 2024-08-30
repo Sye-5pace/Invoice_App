@@ -16,6 +16,7 @@ import { ThemeService } from '../../services/theme.service';
 export class InvoiceListComponent {
   invoiceList$!: Observable<IInvoice[]>;
   themeMode: boolean = false;
+  invoicesLength: number = 0;
 
   constructor(private invoiceOps: InvoiceOpsFacadeService,
     private themeService: ThemeService
@@ -24,6 +25,7 @@ export class InvoiceListComponent {
   ngOnInit():void {
     this.invoiceOps.loadInvoices();
     this.invoiceList$ = this.invoiceOps.filteredInvoices$;
+    this.invoiceList$.subscribe(invoices => this.invoicesLength = invoices.length);
     this.themeService.mode$?.subscribe(
       mode => this.themeMode = mode
     );
