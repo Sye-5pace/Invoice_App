@@ -1,14 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { FormButtonComponent } from "../reusables/form-button/form-button.component";
 import { ModalService } from '../../services/modal.service';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, FormArray, Validators } from '@angular/forms';
 import { ThemeService } from '../../services/theme.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-invoice-form',
   standalone: true,
-  imports: [FormButtonComponent,FormsModule,CommonModule],
+  imports: [FormButtonComponent,FormsModule,CommonModule,ReactiveFormsModule],
   templateUrl: './invoice-form.component.html',
   styleUrl: './invoice-form.component.css'
 })
@@ -17,16 +17,55 @@ export class InvoiceFormComponent {
   @Input() editInvoiceData: any;
   showTerms:boolean = false;
   paymentTerm:string = "Select payment terms";
-  itemList:Array<{name:string , qty: number, price: number}>= [];
+  itemList:Array<{name:string , qty: number, price: number,}>= [];
   themeMode: boolean= false
 
+  invoiceFormList!: FormArray;
+  invoiceForm!: FormGroup;
+
+
   constructor(private modalService: ModalService
-    ,private themeService: ThemeService){}
+    ,private themeService: ThemeService, private fb:FormBuilder){}
 
   ngOnInit(){
     this.themeService.mode$?.subscribe(
       mode => this.themeMode = mode
     );
+    this.initializeForm();
+  }
+
+  initializeForm(){
+    this.invoiceForm = this.fb.group({
+      billForm: this.fb.group({
+        streetAddress: ['', Validators.required],
+        city: ['', Validators.required],
+        postCode: ['', Validators.required],
+        country:['', Validators.required]
+      }),
+      billTo: this.fb.group({
+        clientName:['',Validators.required],
+        clientEmail:['', [Validators.required, Validators.email]],
+        streetAddress:['', Validators.required],
+        city: ['', Validators.required],
+        postCode: ['', Validators.required],
+        country:['', Validators.required]
+      }),
+      invoiceDate:['', Validators.required],
+      termsPayment:['', Validators.required],
+      projectDescription:['', Validators.required],
+      items: this.fb.array([this.createItem()])
+
+    })
+    this.invoiceFormList = this.invoiceFormList.get('invoices') as FormArray
+  }
+
+  createItem(){
+    return this.fb.group({
+      name: ['', Validators.required],
+      qty: [0, [Validators.required,Validators.pattern('^[0-9]*$')]],
+      price: [0, [Validators.required, Validators.pattern('^[0-9]+(.[0-9]{1,2})?$')]],
+
+    })
   }
 
   showTermsOption(){
@@ -43,7 +82,10 @@ export class InvoiceFormComponent {
   }
 
   addListItem():void{
-    this.itemList.push({ name: '', qty: 0, price: 0 });
+    this.itemList.push({
+      name: '', qty: 0, price: 0,
+
+    });
   }
 
   removeListItem(index: number): void{

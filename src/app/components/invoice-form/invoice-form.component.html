@@ -7,57 +7,57 @@
     </h1>
   }
 
-  <div id="invoice-form" class="flex flex-col gap-y-12 scrollable pr-2 text-[.75rem]">
-    <div id="bill-from-div" class="flex flex-col gap-y-3">
+  <form [formGroup]="invoiceForm" id="invoice-form" class="flex flex-col gap-y-12 scrollable pr-2 text-[.75rem]">
+    <div formGroupName="billFrom"  id="bill-from-div" class="flex flex-col gap-y-3">
       <h4 class="text-cornflowerblue font-bold">Bill From</h4>
       <div class="flex flex-col gap-y-6">
         <div class="flex flex-col gap-y-1">
           <label for="street-addr" class="font-medium text-[.75rem] text-shipcove" [class]="themeMode ? 'text-selago':''">Street Address</label>
-          <input type="text" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 px-5 border  h-12 rounded-[.25rem]"  [ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }" placeholder="Street Address">
+          <input formControlName="streetAddress" type="text" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 px-5 border  h-12 rounded-[.25rem]"  [ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }" placeholder="Street Address">
         </div>
         <div class="grid grid-cols-3 gap-4 ">
           <div class="flex flex-col">
             <label for="city" class="text-shipcove" [class]="themeMode ? 'text-selago':''">City</label>
-            <input type="text" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 pl-5 border  h-12 rounded-[.25rem]"  [ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }" placeholder="City">
+            <input formControlName="city"  type="text" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 pl-5 border  h-12 rounded-[.25rem]"  [ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }" placeholder="City">
           </div>
           <div class="flex flex-col">
             <label for="post-code" class="text-shipcove" [class]="themeMode ? 'text-selago':''">Post Code</label>
-            <input type="text" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 pl-5 border  h-12 rounded-[.25rem]"  [ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }" placeholder="Post code">
+            <input formControlName="postCode" type="text" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 pl-5 border  h-12 rounded-[.25rem]"  [ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }" placeholder="Post code">
           </div>
           <div class="flex flex-col">
             <label for="country" class="text-shipcove" [class]="themeMode ? 'text-selago':''">Country</label>
-            <input type="text" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 pl-5 border  h-12 rounded-[.25rem]"  [ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }" placeholder="Country">
+            <input formControlName="country"  type="text" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 pl-5 border  h-12 rounded-[.25rem]"  [ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }" placeholder="Country">
           </div>
         </div>
       </div>
     </div>
 
-    <div id="bill-to-div" class="flex flex-col gap-y-4">
+    <div formGroupName="billTo" id="bill-to-div" class="flex flex-col gap-y-4">
       <h4 class="text-cornflowerblue font-bold">Bill To</h4>
       <div class="flex flex-col gap-y-1">
         <label for="client's-name" class="font-medium text-[.75rem] text-shipcove" [class]="themeMode ? 'text-selago':''">Client's Name</label>
-        <input type="text" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 pl-5 border h-12 rounded-[.25rem]"  [ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }" placeholder="Client's name">
+        <input formControlName="clientName" type="text" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 pl-5 border h-12 rounded-[.25rem]"  [ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }" placeholder="Client's name">
       </div>
       <div class="flex flex-col gap-y-1">
         <label for="client-email" class="font-medium text-[.75rem] text-shipcove" [class]="themeMode ? 'text-selago':''">Client's Email</label>
-        <input type="email" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 pl-5 border h-12 rounded-[.25rem]"  [ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }" placeholder="e.g. email@example.com">
+        <input formControlName="clientEmail"  type="email" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 pl-5 border h-12 rounded-[.25rem]"  [ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }" placeholder="e.g. email@example.com">
       </div>
       <div class="flex flex-col gap-y-1">
         <label for="street-addr" class="font-medium text-[.75rem] text-shipcove" [class]="themeMode ? 'text-selago':''">Street Address</label>
-        <input type="text" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 pl-5 border h-12 rounded-[.25rem]"  [ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }" placeholder="Street Address">
+        <input formControlName="streetAddress"  type="text" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 pl-5 border h-12 rounded-[.25rem]"  [ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }" placeholder="Street Address">
       </div>
       <div class="grid grid-cols-3 gap-4">
         <div class="flex flex-col">
           <label for="city" class="text-shipcove" [class]="themeMode ? 'text-selago':''">City</label>
-        <input type="text" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 pl-5 border  h-12 rounded-[.25rem] "  [ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }" placeholder="City">
+          <input formControlName="city" type="text" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 pl-5 border  h-12 rounded-[.25rem] "  [ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }" placeholder="City">
         </div>
         <div class="flex flex-col">
           <label for="post-code" class="text-shipcove" [class]="themeMode ? 'text-selago':''">Post Code</label>
-          <input type="text" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 pl-5 border  h-12 rounded-[.25rem]" [ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }"   placeholder="Post code">
+          <input formControlName="postCode"  type="text" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 pl-5 border  h-12 rounded-[.25rem]" [ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }"   placeholder="Post code">
         </div>
         <div class="flex flex-col">
           <label for="country" class="text-shipcove" [class]="themeMode ? 'text-selago':''">Country</label>
-          <input type="text" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 pl-5 border h-12 rounded-[.25rem]"[ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }"  placeholder="Country">
+          <input formControlName="country"  type="text" class="focus:outline-none hover:border-cornflowerblue font-bold py-4 pl-5 border h-12 rounded-[.25rem]"[ngClass]="{ 'bg-mirage border-ebonyclay' : themeMode , 'border-selagolight': !themeMode }"  placeholder="Country">
         </div>
       </div>
     </div>
@@ -66,7 +66,7 @@
       <div class="grid grid-cols-2 gap-6">
         <div class="flex flex-col">
           <label for="invoice-date" class="text-shipcove" [class]="themeMode ? 'text-selago':''">Invoice Date</label>
-          <input type="date" class="focus:outline-none hover:border-cornflowerblue cursor-pointer font-bold py-4 pl-5 pr-4 border h-12 rounded-[.25rem]" [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="">
+          <input formControlName="invoiceDate" type="date" class="focus:outline-none hover:border-cornflowerblue cursor-pointer font-bold py-4 pl-5 pr-4 border h-12 rounded-[.25rem]" [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="">
         </div>
         <div id="terms-container" class="flex flex-col">
           <label for="payment-terms" class="text-shipcove" [class]="themeMode ? 'text-selago':''">
@@ -94,7 +94,6 @@
               Net 30 Days
             </div>
           </div>
-
         </div>
       </div>
       <div class="flex flex-col gap-y-1">
@@ -114,11 +113,11 @@
       <div class="flex flex-col gap-y-[1.125rem]">
         @for( item of itemList; track item.name; let i = $index ){
           <div class="flex gap-[2rem] items-center">
-            <div class="flex gap-2 items-center">
-              <input [(ngModel)]="item.name" class="w-[9rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="Item Name">
-              <input type="text" [(ngModel)]="item.qty" class="w-[2.875rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="Qty.">
-              <input type="text" [(ngModel)]="item.price" class="w-[6.25rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="Price">
-              <p class="w-[2.8125rem]">$0.00</p>
+            <div formGroupName="items"  class="flex gap-2 items-center">
+              <input formControlName="name"  type="text" [(ngModel)]="item.name" class="w-[9rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="Item Name">
+              <input formControlName="qty"   type="text" [(ngModel)]="item.qty" class="w-[2.875rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="Qty.">
+              <input formControlName="price"   type="text" [(ngModel)]="item.price" class="w-[6.25rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="Price">
+              <p class="w-[2.8125rem]">{{ item.qty * item.price }}</p>
             </div>
             <button (click)="removeListItem(i)" type="button">
               <img src="../../../assets/images/icon-delete.svg" class="w-[.7775rem] h-4" alt="">
@@ -130,7 +129,7 @@
         + Add New Item
       </button>
     </div>
-  </div>
+  </form>
   <div class=" flex justify-between">
     <app-form-button [buttonClass]="'bg-selagolight text-shipcove w-[6rem]'" [buttonName]="'Discard'" [buttonEvent]="discardTerms.bind(this)"/>
     <div class="flex gap-2">
