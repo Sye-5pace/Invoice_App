@@ -1,3 +1,4 @@
+import { deleteInvoice, editInvoice } from './../store/invoices/invoices.actions';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
@@ -5,7 +6,7 @@ import { map } from 'rxjs/operators';
 import { IInvoice } from './../invoices';
 import { InvoiceState } from '../store/invoices/invoices.reducer';
 import { selectAllInvoices } from './../store/invoices/invoices.selectors';
-import { loadInvoices } from '../store/invoices/invoices.actions';
+import { addInvoice, loadInvoices } from '../store/invoices/invoices.actions';
 import { ModalService } from './modal.service';
 
 @Injectable({
@@ -46,6 +47,18 @@ export class InvoiceOpsFacadeService {
 
   discard(){
     this.modalService.hideCreateModal()
+  }
+
+  addInvoice(invoice: IInvoice){
+    this.store.dispatch(addInvoice({invoice}));
+  }
+
+  editInvoice(invoice: IInvoice){
+    this.store.dispatch(editInvoice({invoice}));
+  }
+
+  deleteInvoice(id: string){
+    this.store.dispatch(deleteInvoice({id}));
   }
 
   updateFilters(newFilters: { [key: string]: boolean }): void {
