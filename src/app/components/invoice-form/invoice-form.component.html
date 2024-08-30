@@ -110,14 +110,14 @@
         <p class="w-[6.25rem]">Price</p>
         <p class="w-[2.8125rem]">Total</p>
       </div>
-      <div class="flex flex-col gap-y-[1.125rem]">
-        @for( item of itemList; track item.name; let i = $index ){
-          <div class="flex gap-[2rem] items-center">
-            <div formGroupName="i"  class="flex gap-2 items-center">
-              <input formControlName="name"  type="text" [(ngModel)]="item.name" class="w-[9rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="Item Name">
-              <input formControlName="qty"   type="text" [(ngModel)]="item.qty" class="w-[2.875rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="Qty.">
-              <input formControlName="price"   type="text" [(ngModel)]="item.price" class="w-[6.25rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  border-ebonyclay':''" placeholder="Price">
-              <p class="w-[2.8125rem]">{{ item.qty * item.price }}</p>
+      <div formArrayName="items"  class="flex flex-col gap-y-[1.125rem]">
+        @for( item of invoiceFormList.controls ; track i; let i = $index ){
+          <div  class="flex gap-[2rem] items-center">
+            <div [formGroupName]="i"  class="flex gap-2 items-center">
+              <input formControlName="name"  type="text"  class="focus:outline-none w-[9rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage text-[#fff]  border-ebonyclay':''" placeholder="Item Name">
+              <input formControlName="qty"   type="number"  class="focus:outline-none w-[2.875rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  text-[#fff] border-ebonyclay':''" placeholder="Qty.">
+              <input formControlName="price"   type="number"  class="focus:outline-none w-[6.25rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage text-[#fff]  border-ebonyclay':''" placeholder="Price">
+              <input type="text" formControlName="total" [value]="calculateItemTotal(item)" placeholder="Total" [disabled]="true" [class]="themeMode ? 'bg-mirage  border-ebonyclay':''"   class="w-[5rem] focus:outline-none  font-bold py-4 pl-5  h-12 rounded-[.25rem]" [ngClass]="{ 'text-selago': themeMode, 'text-balihai':!themeMode }">
             </div>
             <button (click)="removeListItem(i)" type="button">
               <img src="../../../assets/images/icon-delete.svg" class="w-[.7775rem] h-4" alt="">
@@ -133,8 +133,8 @@
   <div class=" flex justify-between">
     <app-form-button [buttonClass]="'bg-selagolight text-shipcove w-[6rem]'" [buttonName]="'Discard'" [buttonEvent]="discardTerms.bind(this)"/>
     <div class="flex gap-2">
-      <app-form-button [buttonClass]="'bg-oxfordblue text-balihai w-[8.3125rem]'" [buttonName]="'Save as Draft'"/>
-      <app-form-button [buttonClass]="'bg-cornflowerblue text-[#fff] w-[8rem]'" [buttonName]="'Save & Send'"/>
+      <app-form-button [buttonClass]="'bg-oxfordblue text-balihai w-[8.3125rem]'" [buttonName]="'Save as Draft'" [buttonEvent]="saveDraft.bind(this)"/>
+      <app-form-button [buttonClass]="'bg-cornflowerblue text-[#fff] w-[8rem]'" [buttonName]="'Save & Send'" [buttonEvent]="saveSend.bind(this)"/>
     </div>
   </div>
 </section>
