@@ -18,12 +18,10 @@ export class InvoiceFormComponent {
   @Input() editInvoiceData: any;
   showTerms:boolean = false;
   paymentTerm:string = "Select payment terms";
-  // itemList:Array<{name:string , qty: number, price: number,}>= [];
   themeMode: boolean= false
 
   invoiceFormList!: FormArray;
   invoiceForm!: FormGroup;
-
 
   constructor(private themeService: ThemeService,
     private invoiceOps: InvoiceOpsFacadeService,
@@ -105,9 +103,22 @@ export class InvoiceFormComponent {
     this.updatePaymentDue();
   }
 
+  // showMessage(msg: string) {
+  //   this.message = msg;
+  //   setTimeout(() => {
+  //     this.message = '';
+  //   }, 3000);
+  // }
 
-  discardTerms(){
-    this.invoiceOps.discard()
+  discardTerms() {
+    this.invoiceForm.reset();
+    while (this.invoiceFormList.length !== 0) {
+      this.invoiceFormList.removeAt(0);
+    }
+    this.paymentTerm = "Select payment terms";
+    this.showTerms = false;
+    this.invoiceOps.discard();
+    // this.showMessage('Invoice discarded successfully');
   }
 
   addListItem():void{
@@ -123,9 +134,9 @@ export class InvoiceFormComponent {
   }
 
   saveSend(){
-    // this.invoiceOps.addInvoice(this.prepareSaveInvoiceData());
-    this.invoiceOps.discard();
-    console.log(this.prepareSaveInvoiceData())
+    this.invoiceOps.addInvoice(this.prepareSaveInvoiceData());
+    this.discardTerms()
+    // console.log(this.prepareSaveInvoiceData())
   }
 
   private prepareSaveInvoiceData(): IInvoice {
@@ -151,11 +162,11 @@ export class InvoiceFormComponent {
 
   private prepareDraftInvoice(){
     return {
-      id: this.editMode? this.editInvoiceData.id : Date.now().toString(),
-      createdAt: new Date().toISOString(),
-      paymentDue: this.invoiceForm.get('invoiceData')?.value,
+      id: this.editMode ? this.editInvoiceData.id : this.generateInvoiceId(),
+      createdAt: new Date().toISOString().split('T')[0],
+      paymentDue: this.invoiceForm.get('paymentDue')?.value,
       description: this.invoiceForm.get('projectDescription')?.value,
-      paymentTerms: parseInt(this.invoiceForm.get('selectedTerm')?.value),
+      paymentTerms: parseInt(this.invoiceForm.get('selectedTerm')?.value.split(' ')[1]),
       clientName: this.invoiceForm.get('billTo.clientName')?.value,
       clientEmail: this.invoiceForm.get('billTo.clientEmail')?.value,
       status: 'draft',
@@ -167,12 +178,11 @@ export class InvoiceFormComponent {
   }
 
   saveDraft(){
+    this.invoiceOps.addInvoice(this.prepareDraftInvoice())
     this.discardTerms()
-    console.log(this.prepareDraftInvoice())
-    // this.invoiceOps.addInvoice(this.prepareDraftInvoice())
   }
 
-  generateInvoiceId(){
+  private generateInvoiceId(){
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const letterPart = letters.charAt(Math.floor(Math.random() * letters.length)) + letters.charAt(Math.floor(Math.random() * letters.length));
     const numberPart = Math.floor(1000 + Math.random() * 9000);
