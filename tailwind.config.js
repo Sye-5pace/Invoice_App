@@ -7,7 +7,7 @@ module.exports = {
     screens: {
       'mobile': {'min':'200px','max':'752px'},
       'tablet': {'min':'768px','max':'1024px'},
-      // 'laptop': {'min':'1024.1px'}
+      'pc': {'min':'1024.1px'}
     },
     fontFamily:{
       'spartan':["League Spartan", "sans-serif"]
