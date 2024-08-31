@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ThemeSwitchComponent } from "../theme-switch/theme-switch.component";
-import { ThemeService } from '../../services/theme.service';
+import anime from 'animejs/lib/anime.es.js';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,5 +15,21 @@ export class SidebarComponent {
 
   constructor( ){}
 
+  ngAfterViewInit() {
+    anime({
+      targets:'#line',
+      width:['0%', '100%'],
+      easing:'easeInOutQuad',
+      delay: 500,
+      duration: 800
+    })
 
+    anime({
+      targets: '#logo',
+      translateY: [-100,0],
+      delay: 700,
+      easing: 'easeOutQuad',
+      opacity:[0,1]
+    })
+  }
 }

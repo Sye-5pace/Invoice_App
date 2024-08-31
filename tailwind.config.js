@@ -32,7 +32,17 @@ module.exports = {
       'shamrock':'#33D69F',
       'pizazz':'#FF8F00'
     },
-    extend: {},
+    extend: {
+      animation: {
+        wiggle: 'wiggle 0.7s ease-in-out ',
+      },
+      keyframes: {
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(-6deg)' },
+          '50%': { transform: 'rotate(6deg)' },
+        }
+      }
+    },
   },
   plugins: [],
 }

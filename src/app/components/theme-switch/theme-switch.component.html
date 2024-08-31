@@ -1,11 +1,11 @@
 <div>
   @if(themeMode){
-    <button (click)="switchTheme()">
-      <img src="../../../assets/images/icon-sun.svg" class="size-[1.2494rem]" alt="theme-icon">
+    <button (click)="switchTheme()" title="switch light mode">
+      <img src="../../../assets/images/icon-sun.svg" class="size-[1.2494rem] animate-wiggle"  alt="theme-icon">
     </button>
   } @else{
-    <button (click)="switchTheme()">
-      <img src="../../../assets/images/icon-moon.svg" class="size-[1.2494rem]" alt="theme-icon">
+    <button (click)="switchTheme()" title="switch dark mode">
+      <img src="../../../assets/images/icon-moon.svg" class="size-[1.2494rem] animate-wiggle" alt="theme-icon">
     </button>
   }
 </div>

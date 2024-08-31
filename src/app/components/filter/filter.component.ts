@@ -25,9 +25,9 @@ export class FilterComponent implements OnInit {
   ) {
 
     this.filterForm = this.fb.group({
-      Draft: [false],
-      Pending: [false],
-      Paid: [false]
+      Draft: [true],
+      Pending: [true],
+      Paid: [true]
     });
   }
 

@@ -2,7 +2,7 @@
   @if (invoicesLength) {
     @if( invoiceList$ | async; as invoiceList){
         @for(invoice of invoiceList; track invoice.id; let i = $index){
-            <div class="flex  items-center justify-between pl-8 pr-6  w-full rounded-[.5rem] h-[4.5rem]" [ngClass]="themeMode ? 'bg-mirage':'bg-[#fff]'">
+            <div class="z-0 flex  items-center justify-between pl-8 pr-6  w-full rounded-[.5rem] h-[4.5rem] invoice-card" [ngClass]="themeMode ? 'bg-mirage':'bg-[#fff]'">
               <div class="flex gap-[2.6875rem] items-center">
                 <p class="font-bold">
                   <span class="text-shipcove">
@@ -54,7 +54,7 @@
         }
     }
   } @else {
-    <div class="flex flex-col items-center justify-center mt-10">
+    <div id="empty"  class="flex flex-col items-center justify-center mt-10">
       <div class="flex flex-col items-center justify-center w-[15.125rem] gap-y-[4rem]">
         <div>
           <img src="../../../assets/images/illustration-empty.svg" alt="">

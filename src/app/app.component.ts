@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { InvoicesPageComponent } from "./views/invoices-page/invoices-page.component";
 import { ThemeService } from './services/theme.service';
-import { CommonModule } from '@angular/common';
+import anime from 'animejs/lib/anime.es.js';
 // import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -21,6 +22,10 @@ export class AppComponent {
 
   ngOnInit(){
     this.themeService.mode$?.subscribe( mode => this.themeMode = mode );
+  }
+
+  ngAfterViewInit(){
+    
   }
 
   getTheme(){

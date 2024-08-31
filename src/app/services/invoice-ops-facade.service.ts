@@ -14,9 +14,9 @@ import { ModalService } from './modal.service';
 })
 export class InvoiceOpsFacadeService {
   private filtersSubject = new BehaviorSubject<{ [key: string]: boolean }>({
-    Draft: false,
-    Pending: false,
-    Paid: false
+    Draft: true,
+    Pending: true,
+    Paid: true
   });
 
   invoices$ = this.store.select(selectAllInvoices);
