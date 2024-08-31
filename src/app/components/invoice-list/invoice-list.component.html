@@ -1,8 +1,9 @@
 <section class="flex flex-col gap-y-4  " [class]="themeMode ? 'text-white':'text-vulcan'">
   @if (invoicesLength) {
     @if( invoiceList$ | async; as invoiceList){
+      <div class="flex flex-col gap-y-4 ">
         @for(invoice of invoiceList; track invoice.id; let i = $index){
-            <div class="z-0 flex  items-center justify-between pl-8 pr-6  w-full rounded-[.5rem] h-[4.5rem] invoice-card" [ngClass]="themeMode ? 'bg-mirage':'bg-[#fff]'">
+            <div class="z-0 flex hover:border-cornflowerblue cursor-pointer  items-center justify-between pl-8 pr-6  w-full rounded-[.5rem] h-[4.5rem] invoice-card" [ngClass]="themeMode ? 'bg-mirage':'bg-[#fff]'">
               <div class="flex gap-[2.6875rem] items-center">
                 <p class="font-bold">
                   <span class="text-shipcove">
@@ -52,6 +53,7 @@
               </div>
             </div>
         }
+      </div>
     }
   } @else {
     <div id="empty"  class="flex flex-col items-center justify-center mt-10">

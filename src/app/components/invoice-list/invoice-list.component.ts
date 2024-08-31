@@ -49,10 +49,10 @@ export class InvoiceListComponent {
       }, 0);
     });
 
-    anime({
-      targets:'#empty img',
-      
-    })
+    // anime({
+    //   targets:'#empty img',
+
+    // })
 
 
   }
