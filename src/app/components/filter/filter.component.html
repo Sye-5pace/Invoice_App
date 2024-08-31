@@ -1,6 +1,6 @@
 <div [formGroup]="filterForm">
   <button type="button" class="font-bold text-[.75rem] flex gap-4 items-center" (click)="showFilters()">
-    Filter by status
+    Filter <span class="mobile:hidden">  by status </span>
     <img [src]="showFilter ? '../../../assets/images/icon-arrow-up.svg' : '../../../assets/images/icon-arrow-down.svg'" class="pb-1" alt="filter-arrow">
   </button>
   <div  id="filter-options" class="flex flex-col gap-y-2 absolute bg-[#fff] pc:top-[7.85rem] tablet:top-[11.5rem] tablet:right-[10rem] pc:right-[27rem] font-bold justify-center pl-6 rounded-[.5rem] w-[12rem] h-[8rem] drop-shadow-purple z-[5]" [ngClass]="{'flex': showFilter, 'hidden': !showFilter, 'bg-oxfordblue':themeMode}">

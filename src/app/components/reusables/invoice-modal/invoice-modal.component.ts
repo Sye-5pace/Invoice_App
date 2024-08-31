@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ModalService } from '../../../services/modal.service';
 import { InvoiceFormComponent } from "../../invoice-form/invoice-form.component";
 
+
 @Component({
   selector: 'app-invoice-modal',
   standalone: true,
@@ -21,6 +22,10 @@ export class InvoiceModalComponent {
       this.openModal = modal
     )
   }
+
+
+
+
 
   discardCreateModal():void{
     this.modalService.hideCreateModal()

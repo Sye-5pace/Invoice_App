@@ -5,6 +5,7 @@ import { ThemeService } from '../../services/theme.service';
 import { CommonModule } from '@angular/common';
 import { InvoiceOpsFacadeService } from '../../services/invoice-ops-facade.service';
 import { IInvoice } from '../../invoices';
+import anime from 'animejs/lib/anime.es.js';
 
 @Component({
   selector: 'app-invoice-form',
@@ -13,6 +14,7 @@ import { IInvoice } from '../../invoices';
   templateUrl: './invoice-form.component.html',
   styleUrl: './invoice-form.component.css'
 })
+
 export class InvoiceFormComponent {
   @Input() editMode:boolean = false;
   @Input() editInvoiceData: any;
@@ -33,6 +35,8 @@ export class InvoiceFormComponent {
     );
     this.initializeForm();
   }
+
+  
 
   initializeForm() {
     this.invoiceForm = this.fb.group({
@@ -81,8 +85,6 @@ export class InvoiceFormComponent {
       this.invoiceForm.get('paymentDue')?.setValue(paymentDue.toISOString().split('T')[0]);
     }
   }
-
-
 
   createItem(){
     return this.fb.group({

@@ -1,4 +1,10 @@
-<section class="flex flex-col gap-y-12 bg-[#fff] w-[43rem] h-full pt-[3.5rem] pb-8 pl-[9.9375rem] pr-[3rem] rounded-tr-[1.25rem] rounded-br-[1.25rem]" [class]="themeMode ? 'bg-miragedeep':'bg-[#fff]'">
+<section class="flex flex-col gap-y-12 mobile:gap-y-6 bg-[#fff] w-[43rem] mobile:w-full h-full pt-[3.5rem] mobile:pt-[6rem] mobile:px-6 pb-8 pl-[9.9375rem] pr-[3rem] rounded-tr-[1.25rem] rounded-br-[1.25rem]" [class]="themeMode ? 'bg-miragedeep':'bg-[#fff]'">
+
+  <div class="text-[.75rem] tablet:hidden pc:hidden flex gap-3 items-center" >
+    <img class="h-[.5rem] w-[.25rem]"  src="../../../assets/images/icon-arrow-left.svg" alt="">
+    Go Back
+  </div>
+
   @if(editMode){
     <h1>Invoice id</h1>
   } @else {
@@ -7,7 +13,7 @@
     </h1>
   }
 
-  <form [formGroup]="invoiceForm" id="invoice-form" class="flex flex-col gap-y-12 scrollable pr-2 text-[.75rem]">
+  <form [formGroup]="invoiceForm" id="invoice-form" class="flex flex-col gap-y-12 scrollable pr-2 text-[.75rem]" [class]="themeMode ? 'scrollthumb-dark':'scrollthumb-light'">
     <div formGroupName="billForm"  id="bill-from-div" class="flex flex-col gap-y-3">
       <h4 class="text-cornflowerblue font-bold">Bill From</h4>
       <div class="flex flex-col gap-y-6">

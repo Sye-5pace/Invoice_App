@@ -23,7 +23,13 @@ html,body{
   background: transparent ;
 }
 
-.scrollable::-webkit-scrollbar-thumb {
+.scrollthumb-dark::-webkit-scrollbar-thumb {
+  background: #252945;
+  border-radius: 10px;
+  background-clip: content-box;
+}
+
+.scrollthumb-light::-webkit-scrollbar-thumb {
   background: #DFE3FA;
   border-radius: 10px;
   background-clip: content-box;
