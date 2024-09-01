@@ -1,0 +1,17 @@
+<div class="bg-[#000] bg-opacity-50 backdrop-blur-sm fixed inset-0 z-20 flex justify-center items-center" [class]="openModal ?'flex':'hidden'">
+  <div class="w-[30rem] h-[15.5625rem] rounded-[.5rem] p-12 flex flex-col gap-y-[.8438rem]" [class]="themeMode ? 'bg-mirage':'bg-[#fff]'">
+    <h3 class=" text-[1.5rem] font-bold">Confirm Deletion</h3>
+    <p class="font-medium" [class]="themeMode ? 'text-selago':'text-shipcove'">
+      Are you sure you want to delete invoice #{{ selectedInvoiceId }}? This action cannot be undone.
+    </p>
+
+    <div class="self-end flex gap-2">
+      <button (click)="hideModal()"    class="text-shipcove w-[6rem] rounded-[1.5rem] h-12 font-bold " title="Edit invoice"
+        [ngClass]="{'bg-ebonyclay ': themeMode, 'bg-selago ': !themeMode}"
+      >
+        Cancel
+      </button>
+      <app-form-button  [buttonClass]="'bg-burntsienna w-[89px] text-[#fff]'" [buttonName]="'Delete'" [buttonTitle]="'Delete invoice'"/>
+    </div>
+  </div>
+</div>

@@ -35,13 +35,13 @@
       </div>
     </div>
     <div class="flex gap-2 mobile:hidden">
-      <button (click)="openDeleteModal()"  class="text-shipcove w-[6rem] rounded-[1.5rem] h-12 font-bold " title="Edit invoice"
+      <button (click)="openCreateModal()"    class="text-shipcove w-[6rem] rounded-[1.5rem] h-12 font-bold " title="Edit invoice"
         [ngClass]="{'bg-ebonyclay ': themeMode, 'bg-selago ': !themeMode}"
       >
         Edit
       </button>
-      <app-form-button [buttonClass]="'bg-burntsienna w-[89px]'" [buttonName]="'Delete'" [buttonTitle]="'Delete invoice'"/>
-      <app-form-button [buttonClass]="'bg-cornflowerblue w-[131px]'" [buttonName]="'Mark as Paid'" [buttonTitle]="'Mark invoice as paid'"/>
+      <app-form-button [buttonEvent]="openDeleteModal.bind(this)" [buttonClass]="'bg-burntsienna w-[89px] text-[#fff]'" [buttonName]="'Delete'" [buttonTitle]="'Delete invoice'"/>
+      <app-form-button [buttonClass]="'bg-cornflowerblue w-[131px] text-[#fff]'" [buttonName]="'Mark as Paid'" [buttonTitle]="'Mark invoice as paid'"/>
     </div>
   </div>
 </section>

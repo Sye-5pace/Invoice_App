@@ -38,5 +38,8 @@ export class DetailSettingsComponent {
   openDeleteModal(){
     this.modalService.showDeleteModal()
   }
+  openCreateModal(){
+    this.modalService.showCreateModal()
+  }
 
 }

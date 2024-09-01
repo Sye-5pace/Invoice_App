@@ -13,7 +13,7 @@ import { InvoiceFormComponent } from "../../invoice-form/invoice-form.component"
 
 export class InvoiceModalComponent {
   openModal:boolean = false;
-
+  @Input() editInvoiceData: any;
 
   constructor(private modalService: ModalService){}
 
@@ -21,9 +21,9 @@ export class InvoiceModalComponent {
     this.modalService.openCreateModal$.subscribe( modal =>
       this.openModal = modal
     )
-    this.modalService.openDeleteModal$.subscribe( modal =>
-      this.openModal = modal
-    )
+    // this.modalService.openDeleteModal$.subscribe( modal =>
+    //   this.openModal = modal
+    // )
   }
 
 
