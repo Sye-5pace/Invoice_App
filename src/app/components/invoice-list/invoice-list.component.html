@@ -4,7 +4,7 @@
       <div class="flex flex-col gap-y-4 ">
         @for(invoice of invoiceList; track invoice.id; let i = $index){
           <!-- PC & tablet screen -->
-          <div class="z-0 flex hover:border-cornflowerblue cursor-pointer mobile:hidden  items-center justify-between pl-8 pr-6 mobile:p-6  w-full rounded-[.5rem] h-[4.5rem] mobile:h-[8.375rem] invoice-card" [ngClass]="themeMode ? 'bg-mirage':'bg-[#fff]'">
+          <div class="z-0 flex hover:border-cornflowerblue cursor-pointer mobile:hidden  items-center justify-between pl-8 pr-6 mobile:p-6  w-full rounded-[.5rem] h-[4.5rem] mobile:h-[8.375rem] invoice-card"  (click)="viewInvoiceDetail(invoice.id)" [ngClass]="themeMode ? 'bg-mirage':'bg-[#fff]'">
             <div class="flex gap-[2.6875rem] items-center mobile:flex-col mobile:gap-6">
               <p class="font-bold">
                 <span class="text-shipcove">

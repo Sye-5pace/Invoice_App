@@ -5,13 +5,14 @@ import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IInvoice } from './../invoices';
 import { InvoiceState } from '../store/invoices/invoices.reducer';
-import { selectAllInvoices } from './../store/invoices/invoices.selectors';
+import { selectAllInvoices, selectInvoiceById } from './../store/invoices/invoices.selectors';
 import { addInvoice, loadInvoices } from '../store/invoices/invoices.actions';
 import { ModalService } from './modal.service';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class InvoiceOpsFacadeService {
   private filtersSubject = new BehaviorSubject<{ [key: string]: boolean }>({
     Draft: true,
@@ -20,6 +21,7 @@ export class InvoiceOpsFacadeService {
   });
 
   invoices$ = this.store.select(selectAllInvoices);
+  selectedInvoice$: Observable<IInvoice | undefined> = this.store.select(selectInvoiceById)
   filters$ = this.filtersSubject.asObservable();
 
   filteredInvoices$: Observable<IInvoice[]> = combineLatest([this.invoices$, this.filters$]).pipe(
@@ -39,7 +41,9 @@ export class InvoiceOpsFacadeService {
     })
   );
 
-  constructor(private store: Store<InvoiceState>, private modalService: ModalService) {}
+  constructor(private store: Store<InvoiceState>, private modalService: ModalService) {
+    this.selectedInvoice$.subscribe(invoice => console.log(invoice))
+  }
 
   loadInvoices(): void {
     this.store.dispatch(loadInvoices());

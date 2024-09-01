@@ -8,10 +8,12 @@ import { routes } from './app.routes';
 import { appReducers } from './store/reducers';
 import { InvoicesEffects } from './store/invoices/invoices.effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { provideRouterStore } from '@ngrx/router-store';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
+    provideRouterStore(),
     provideStore(appReducers),
     provideHttpClient(),
     provideEffects([InvoicesEffects]),

@@ -5,6 +5,7 @@ import anime from 'animejs/lib/anime.es.js';
 import { InvoiceOpsFacadeService } from '../../services/invoice-ops-facade.service';
 import { ThemeService } from '../../services/theme.service';
 import { IInvoice } from '../../invoices';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-invoice-list',
@@ -21,7 +22,8 @@ export class InvoiceListComponent {
   private unsubscribe$ = new Subject<void>();
 
   constructor(private invoiceOps: InvoiceOpsFacadeService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private router: Router
   ){}
 
   ngOnInit():void {
@@ -55,5 +57,13 @@ export class InvoiceListComponent {
     // })
 
 
+  }
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
+  viewInvoiceDetail(invoiceId: any){
+    this.router.navigate(['/invoice-detail', invoiceId]);
   }
 }
