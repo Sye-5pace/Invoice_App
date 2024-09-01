@@ -25,6 +25,14 @@ export class SidebarComponent {
     })
 
     anime({
+      targets:'#line-tab',
+      height:['0%', '100%'],
+      easing:'easeInOutQuad',
+      delay: 500,
+      duration: 800
+    })
+
+    anime({
       targets: '#logo',
       translateY: [-100,0],
       delay: 700,

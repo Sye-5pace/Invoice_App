@@ -1,6 +1,16 @@
-<section class="flex  justify-center pb-[3.375rem]">
-  <div class="flex flex-col  items-center gap-y-6">
+<app-invoice-modal/>
+<section class="flex  justify-center pb-[3.375rem] mobile:pb-[8rem]">
+  <div class="flex flex-col  items-center gap-y-6 ">
     <app-detail-settings/>
     <app-detail/>
+  </div>
+  <div class="fixed px-6 flex gap-2 justify-center items-center top-[32rem] h-[5.6875rem] w-full   pc:hidden tablet:hidden" [class]="themeMode ?'bg-mirage':'bg-[#fff]'">
+    <button class="w-[6rem] rounded-[1.5rem] h-12 font-bold text-[#fff]" title="Edit invoice"
+    [ngClass]="{'bg-ebonyclay text-selago ': themeMode, 'bg-selago text-shipcove ': !themeMode}"
+      >
+        Edit
+    </button>
+    <app-form-button [buttonClass]="'bg-burntsienna w-[5.5625rem] text-[#fff]'" [buttonName]="'Delete'" [buttonTitle]="'Delete invoice'"/>
+    <app-form-button [buttonClass]="'bg-cornflowerblue w-[9.3125rem] text-[#fff]'" [buttonName]="'Mark as Paid'" [buttonTitle]="'Mark invoice as paid'"/>
   </div>
 </section>

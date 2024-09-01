@@ -1,13 +1,13 @@
-<section class="w-[45.625rem] flex flex-col gap-y-6" >
+<section class="w-[45.625rem] mobile:w-[20.4375rem] flex flex-col gap-y-6" >
   <div class="flex gap-4 items-center cursor-pointer" routerLink="">
     <img class="h-[.5rem] w-[.25rem]" src="../../../../assets/images/icon-arrow-left.svg" alt="">
     <p>Go back</p>
   </div>
 
   <div class="rounded-[.5rem] px-8  h-[5.5rem] flex items-center justify-between" [class]="themeMode ?'bg-mirage':'bg-[#fff]'">
-    <div class="flex gap-4 items-center">
-      <p>Status</p>
-      <div class="*:rounded-[.5rem] *:w-[6.5rem] *:h-[2.5rem] flex">
+    <div class="flex gap-4 items-center mobile:justify-between w-full">
+      <p [class]="themeMode ? 'text-selago':'text-shipcove'">Status</p>
+      <div class="*:rounded-[.5rem] *:w-[6.5rem] *:h-[2.5rem] flex self-end">
         @if(selectedInvoice$ | async; as invoice){
           @if(invoice.status === 'paid'){
             <div class="bg-shamrock bg-opacity-[5.71%] text-shamrock flex justify-center items-center">
@@ -34,8 +34,8 @@
         }
       </div>
     </div>
-    <div class="flex gap-2">
-      <button class="text-shipcove w-[6rem] rounded-[1.5rem] h-12 font-bold " title="Edit invoice"
+    <div class="flex gap-2 mobile:hidden">
+      <button (click)="openDeleteModal()"  class="text-shipcove w-[6rem] rounded-[1.5rem] h-12 font-bold " title="Edit invoice"
         [ngClass]="{'bg-ebonyclay ': themeMode, 'bg-selago ': !themeMode}"
       >
         Edit
@@ -47,5 +47,4 @@
 </section>
 
 
-<!-- buttonClass!: string | string[] | { [klass: string]: any } -->
-<!--  -->
+

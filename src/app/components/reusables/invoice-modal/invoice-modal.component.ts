@@ -21,6 +21,9 @@ export class InvoiceModalComponent {
     this.modalService.openCreateModal$.subscribe( modal =>
       this.openModal = modal
     )
+    this.modalService.openDeleteModal$.subscribe( modal =>
+      this.openModal = modal
+    )
   }
 
 
