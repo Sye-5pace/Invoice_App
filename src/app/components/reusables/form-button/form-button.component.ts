@@ -11,6 +11,7 @@ import { Component, Input } from '@angular/core';
 
 export class FormButtonComponent {
   @Input() buttonName!: string;
+  @Input() buttonTitle!: string;
   @Input() buttonEvent!: () => void;
-  @Input() buttonClass!: string;
+  @Input() buttonClass!:  string | string[] | { [klass: string]: any }
 }

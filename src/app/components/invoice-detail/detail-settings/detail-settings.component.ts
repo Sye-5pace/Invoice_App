@@ -5,11 +5,12 @@ import { IInvoice } from '../../../invoices';
 import { InvoiceOpsFacadeService } from '../../../services/invoice-ops-facade.service';
 import { CommonModule } from '@angular/common';
 import { FormButtonComponent } from "../../reusables/form-button/form-button.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-detail-settings',
   standalone: true,
-  imports: [CommonModule, FormButtonComponent],
+  imports: [CommonModule, FormButtonComponent,RouterLink],
   templateUrl: './detail-settings.component.html',
   styleUrl: './detail-settings.component.css'
 })

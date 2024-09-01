@@ -1,8 +1,8 @@
-<section class="w-[45.625rem] rounded-[.5rem] p-12 font-medium text-[.6875rem]" [class]="themeMode ?'bg-mirage':'bg-[#fff]'">
+<section class=" flex flex-col gap-y-[2.5rem] rounded-[.5rem] p-12 font-medium text-[.6875rem]" [class]="themeMode ?'bg-mirage':'bg-[#fff]'">
   @if(selectedInvoice$ | async; as invoice){
     <div class="flex flex-col gap-y-[1.3125rem]">
       <!-- detail sender's -->
-      <div class="flex justify-between w-full">
+      <div class="flex justify-between ">
         <div class="flex flex-col">
           <p class="font-bold text-[1rem]">
             <span class="text-shipcove">
@@ -25,18 +25,18 @@
         <div class="flex gap-[6.25rem]">
           <div class="flex flex-col gap-y-8">
             <div  class="flex flex-col">
-              <p  [class]="themeMode ?'text-selago':'text-shipcove'">Invoice Date</p>
+              <p class="text-[.75rem] font-medium"  [class]="themeMode ?'text-selago':'text-shipcove'">Invoice Date</p>
               <h4 class="font-bold text-[.9375rem]">{{ invoice.createdAt | date }}</h4>
             </div>
             <div  class="flex flex-col">
-              <p [class]="themeMode ?'text-selago':'text-shipcove'">Payment Due</p>
+              <p class="text-[.75rem] font-medium" [class]="themeMode ?'text-selago':'text-shipcove'">Payment Due</p>
               <h4 class="font-bold text-[.9375rem]">{{ invoice.paymentDue| date}}</h4>
             </div>
           </div>
           <div class="flex flex-col gap-3">
             <p [class]="themeMode ?'text-selago':'text-shipcove'">Bill To</p>
             <div class="flex flex-col gap-2">
-              <h4 >{{ invoice.clientName }}</h4>
+              <h4 class="font-bold text-[.9375rem]">{{ invoice.clientName }}</h4>
               <div [class]="themeMode ?'text-selago':'text-shipcove'">
                 <p>{{ invoice.clientAddress.street}}</p>
                 <p>{{ invoice.clientAddress.city }}</p>
@@ -52,8 +52,31 @@
         </div>
       </div>
     </div>
-    <div>
 
-    </div>
+    <!-- invoice items -->
+     <div class="flex flex-col w-[39.625rem]">
+       <div class="px-8 pb-[2.5rem] pt-8 flex flex-col justify-around rounded-t-[.5rem] h-[11.5rem] gap-y-6"  [class]="themeMode ? 'bg-ebonyclay':'bg-selagolight'">
+         <div class="flex justify-around font-medium text-[.6875rem]" [class]="themeMode ? 'text-selago':'text-shipcove'">
+           <p class="w-[18.25rem]">Item Name</p>
+           <p class="w-[1.8125rem]">QTY.</p>
+           <p class="w-[8rem] text-right">Price</p>
+           <p class="w-[8rem] text-right">Total</p>
+         </div>
+         <div class="flex flex-col gap-y-6 font-bold">
+           @for(item of invoice.items; track item.name; let i = $index){
+             <div class="flex justify-around">
+               <p class="w-[18.25rem]">{{ item.name }}</p>
+               <p class="w-[1.8125rem] text-center" [class]="themeMode ? 'text-selago':'text-shipcove'">{{ item.quantity }}</p>
+               <p class="w-[8rem] text-right" [class]="themeMode ? 'text-selago':'text-shipcove'">£ {{ item.price }}</p>
+               <p class="w-[8rem] text-right">£ {{ item.total }}</p>
+             </div>
+           }
+         </div>
+       </div>
+       <div class="h-[5rem] px-8 items-center rounded-b-[.5rem] w-full flex justify-between" [class]="themeMode ? 'bg-vulcan':'bg-oxfordblue'">
+          <p>Amount Due</p>
+          <h2 class="text-[#fff] font-bold text-[1.5rem]">£ {{ invoice.total }}</h2>
+       </div>
+     </div>
   }
 </section>

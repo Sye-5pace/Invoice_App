@@ -137,10 +137,10 @@
     </div>
   </form>
   <div class=" flex justify-between">
-    <app-form-button [buttonClass]="'bg-selagolight text-shipcove w-[6rem]'" [buttonName]="'Discard'" [buttonEvent]="discardTerms.bind(this)"/>
+    <app-form-button [buttonTitle]="'Discard invoice'" [buttonClass]="'bg-selagolight text-shipcove w-[6rem]'" [buttonName]="'Discard'" [buttonEvent]="discardTerms.bind(this)"/>
     <div class="flex gap-2">
-      <app-form-button [buttonClass]="'bg-oxfordblue text-balihai w-[8.3125rem]'" [buttonName]="'Save as Draft'" [buttonEvent]="saveDraft.bind(this)"/>
-      <app-form-button [buttonClass]="'bg-cornflowerblue text-[#fff] w-[8rem]'" [buttonName]="'Save & Send'" [buttonEvent]="saveSend.bind(this)"/>
+      <app-form-button  [buttonTitle]="'Save invoice as Draft'"  [buttonClass]="'bg-oxfordblue text-balihai w-[8.3125rem]'" [buttonName]="'Save as Draft'" [buttonEvent]="saveDraft.bind(this)"/>
+      <app-form-button [buttonTitle]="'Save invoice and Send'" [buttonClass]="'bg-cornflowerblue text-[#fff] w-[8rem]'" [buttonName]="'Save & Send'" [buttonEvent]="saveSend.bind(this)"/>
     </div>
   </div>
 </section>
