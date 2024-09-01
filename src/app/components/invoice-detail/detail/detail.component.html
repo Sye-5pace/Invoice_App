@@ -1,7 +1,59 @@
-details go here
-
-<section>
+<section class="w-[45.625rem] rounded-[.5rem] p-12 font-medium text-[.6875rem]" [class]="themeMode ?'bg-mirage':'bg-[#fff]'">
   @if(selectedInvoice$ | async; as invoice){
-    <p>{{ invoice.id }}</p>
+    <div class="flex flex-col gap-y-[1.3125rem]">
+      <!-- detail sender's -->
+      <div class="flex justify-between w-full">
+        <div class="flex flex-col">
+          <p class="font-bold text-[1rem]">
+            <span class="text-shipcove">
+              #
+            </span>
+              {{ invoice.id }}
+          </p>
+          <p>{{ invoice.description }}</p>
+        </div>
+        <div class="flex flex-col items-end">
+          <p>{{ invoice.senderAddress.street}}</p>
+          <p>{{ invoice.senderAddress.city }}</p>
+          <p>{{ invoice.senderAddress.postCode }}</p>
+          <p>{{ invoice.senderAddress.country}}</p>
+        </div>
+      </div>
+
+      <!-- details client's -->
+      <div class="flex items-center gap-[6.875rem]">
+        <div class="flex gap-[6.25rem]">
+          <div class="flex flex-col gap-y-8">
+            <div  class="flex flex-col">
+              <p  [class]="themeMode ?'text-selago':'text-shipcove'">Invoice Date</p>
+              <h4 class="font-bold text-[.9375rem]">{{ invoice.createdAt | date }}</h4>
+            </div>
+            <div  class="flex flex-col">
+              <p [class]="themeMode ?'text-selago':'text-shipcove'">Payment Due</p>
+              <h4 class="font-bold text-[.9375rem]">{{ invoice.paymentDue| date}}</h4>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3">
+            <p [class]="themeMode ?'text-selago':'text-shipcove'">Bill To</p>
+            <div class="flex flex-col gap-2">
+              <h4 >{{ invoice.clientName }}</h4>
+              <div [class]="themeMode ?'text-selago':'text-shipcove'">
+                <p>{{ invoice.clientAddress.street}}</p>
+                <p>{{ invoice.clientAddress.city }}</p>
+                <p>{{ invoice.clientAddress.postCode }}</p>
+                <p>{{ invoice.clientAddress.country}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="self-start">
+          <p [class]="themeMode ?'text-selago':'text-shipcove'">Sent To</p>
+          <h4 class="font-bold text-[.9375rem]">{{ invoice.clientEmail }}</h4>
+        </div>
+      </div>
+    </div>
+    <div>
+
+    </div>
   }
 </section>

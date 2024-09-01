@@ -1,1 +1,44 @@
-<p>detail-settings works!</p>
+<section class="w-full border" [class]="themeMode ? '':''">
+  <div class="flex" routerLink="/">
+
+    <p>Go back</p>
+  </div>
+
+  <div class="rounded-[.5rem] px-8  h-[5.5rem] flex items-center gap-[12.375rem]" [class]="themeMode ?'bg-mirage':'bg-[#fff]'">
+    <div class="flex gap-4 items-center">
+      <p>Status</p>
+      <div class="*:rounded-[.5rem] *:w-[6.5rem] *:h-[2.5rem] flex">
+        @if(selectedInvoice$ | async; as invoice){
+          @if(invoice.status === 'paid'){
+            <div class="bg-shamrock bg-opacity-[5.71%] text-shamrock flex justify-center items-center">
+              <div class="flex items-center gap-2 py-3">
+                <div class="w-[0.5rem] h-[0.5rem] rounded-full bg-shamrock"></div>
+                {{ invoice.status | titlecase }}
+              </div>
+            </div>
+          } @else if (invoice.status ===  'pending') {
+            <div class="bg-pizazz bg-opacity-[5.71%] text-pizazz flex justify-center items-center">
+              <div class="flex items-center gap-2 py-3">
+                <div class="w-[0.5rem] h-[0.5rem] rounded-full bg-pizazz"></div>
+                {{ invoice.status | titlecase }}
+              </div>
+            </div>
+          } @else {
+            <div class="bg-selago bg-opacity-[5.71%] text-selago flex justify-center items-center">
+              <div class="flex items-center gap-2 py-3">
+                <div class="w-[0.5rem] h-[0.5rem] rounded-full bg-selago"></div>
+                {{ invoice.status | titlecase }}
+              </div>
+            </div>
+          }
+        }
+      </div>
+    </div>
+    <div class="flex gap-2">
+      <app-form-button [buttonClass]="'bg-selagolight text-shipcove w-[6rem]'"
+       [buttonName]="'Edit'" />
+      <app-form-button [buttonClass]="'bg-burntsienna w-[89px]'" [buttonName]="'Delete'"/>
+      <app-form-button [buttonClass]="'bg-cornflowerblue w-[131px]'" [buttonName]="'Mark as Paid'"/>
+    </div>
+  </div>
+</section>

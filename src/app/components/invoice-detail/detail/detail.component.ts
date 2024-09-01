@@ -3,6 +3,7 @@ import { InvoiceOpsFacadeService } from '../../../services/invoice-ops-facade.se
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { IInvoice } from '../../../invoices';
+import { ThemeService } from '../../../services/theme.service';
 
 @Component({
   selector: 'app-detail',
@@ -14,12 +15,16 @@ import { IInvoice } from '../../../invoices';
 
 export class DetailComponent {
   selectedInvoice$: Observable<IInvoice | undefined>;
-
-  constructor(private invoiceOpsFacade: InvoiceOpsFacadeService) {
+  themeMode: boolean = false;
+street: any;
+  constructor(private invoiceOpsFacade: InvoiceOpsFacadeService,
+    private themeService: ThemeService
+  ) {
     this.selectedInvoice$ = this.invoiceOpsFacade.selectedInvoice$;
   }
 
-  // ngOnInit(): void {
-  //   this.invoiceOpsFacade.loadInvoices();
-  // }
+  ngOnInit(): void {
+    this.themeService.mode$?.subscribe(mode => this.themeMode = mode);
+    this.invoiceOpsFacade.loadInvoices();
+  }
 }
