@@ -11,7 +11,7 @@
       >
         Edit
     </button>
-    <app-form-button [buttonClass]="'bg-burntsienna w-[5.5625rem] text-[#fff]'" [buttonName]="'Delete'" [buttonTitle]="'Delete invoice'"/>
+    <app-form-button [buttonEvent]="openDeleteModal.bind(this)" [buttonClass]="'bg-burntsienna w-[5.5625rem] text-[#fff]'" [buttonName]="'Delete'" [buttonTitle]="'Delete invoice'"/>
     <app-form-button [buttonClass]="'bg-cornflowerblue w-[9.3125rem] text-[#fff]'" [buttonName]="'Mark as Paid'" [buttonTitle]="'Mark invoice as paid'"/>
   </div>
 </section>

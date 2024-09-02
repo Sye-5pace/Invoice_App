@@ -51,11 +51,7 @@ export class InvoiceListComponent {
       }, 0);
     });
 
-    // anime({
-    //   targets:'#empty img',
-
-    // })
-
+   
 
   }
   ngOnDestroy(): void {

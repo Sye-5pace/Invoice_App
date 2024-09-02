@@ -7,6 +7,8 @@ import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../services/theme.service';
 import { InvoiceModalComponent } from "../../components/reusables/invoice-modal/invoice-modal.component";
 import { DeleteModalComponent } from "../../components/delete-modal/delete-modal.component";
+import { Router } from '@angular/router';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-invoice-detail-page',
@@ -19,8 +21,11 @@ import { DeleteModalComponent } from "../../components/delete-modal/delete-modal
 export class InvoiceDetailPageComponent {
   editInvoiceData!: any;
   themeMode : boolean = false;
+  selectedInvoiceId!: any;
   constructor(private themeService: ThemeService,
-    private invoiceOps: InvoiceOpsFacadeService){}
+    private invoiceOps: InvoiceOpsFacadeService,
+    private modalService: ModalService,
+  ){}
 
   ngOnInit(){
     this.themeService.mode$?.subscribe( mode => this.themeMode = mode );
@@ -30,7 +35,11 @@ export class InvoiceDetailPageComponent {
         console.log(invoice);
       }
     )
+    this.invoiceOps.selectedInvoice$.subscribe(invoice => this.selectedInvoiceId = invoice?.id)
   }
 
 
+  openDeleteModal(){
+    this.modalService.showDeleteModal()
+  }
 }
