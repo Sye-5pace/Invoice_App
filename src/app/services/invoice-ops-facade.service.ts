@@ -2,7 +2,7 @@ import { deleteInvoice, editInvoice } from './../store/invoices/invoices.actions
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { first, map, tap } from 'rxjs/operators';
 import { IInvoice } from './../invoices';
 import { InvoiceState } from '../store/invoices/invoices.reducer';
 import { selectAllInvoices, selectInvoiceById } from './../store/invoices/invoices.selectors';
@@ -32,7 +32,6 @@ export class InvoiceOpsFacadeService {
 
       if (activeFilters.length === 0) {
         return [];
-        // return invoices;
       }
 
       return invoices.filter(invoice =>
@@ -42,7 +41,14 @@ export class InvoiceOpsFacadeService {
   );
 
   constructor(private store: Store<InvoiceState>, private modalService: ModalService) {
-    this.selectedInvoice$.subscribe(invoice => console.log(invoice))
+    this.invoices$.pipe(
+      first(), 
+      tap(invoices => {
+        if (invoices.length === 0) {
+          this.loadInvoices();
+        }
+      })
+    ).subscribe();
   }
 
   loadInvoices(): void {

@@ -51,8 +51,7 @@ export class InvoiceListComponent {
       }, 0);
     });
 
-   
-
+    
   }
   ngOnDestroy(): void {
     this.unsubscribe$.next();

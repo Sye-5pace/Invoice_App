@@ -39,9 +39,9 @@ export const invoiceReducer = createReducer(
   on(editInvoice, (state, { invoice }) =>
     adapter.updateOne({ id: invoice.id, changes: invoice }, state)
   ),
-  on(deleteInvoice, (state, { id }) =>
-    adapter.removeOne(id, state)
-  )
+  on(deleteInvoice, (state, { id }) => {
+    return adapter.removeOne(id, state);
+  })
 );
 
 export const { selectAll, selectEntities, selectIds, selectTotal } = adapter.getSelectors();

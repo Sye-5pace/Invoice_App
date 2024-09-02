@@ -121,8 +121,8 @@
           <div  class="flex gap-[2rem] items-center">
             <div [formGroupName]="i"  class="flex gap-2 items-center">
               <input formControlName="name"  type="text"  class="focus:outline-none w-[9rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage text-[#fff]  border-ebonyclay':''" placeholder="Item Name">
-              <input formControlName="qty"   type="number"  class="focus:outline-none w-[2.875rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  text-[#fff] border-ebonyclay':''" placeholder="Qty.">
-              <input formControlName="price"   type="number"  class="focus:outline-none w-[6.25rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage text-[#fff]  border-ebonyclay':''" placeholder="Price">
+              <input formControlName="qty"   type="text"  class="focus:outline-none w-[2.875rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage  text-[#fff] border-ebonyclay':''" placeholder="Qty.">
+              <input formControlName="price"   type="text"  class="focus:outline-none w-[6.25rem] font-bold py-4 pl-5 pr-4 border border-selago h-12 rounded-[.25rem]"  [class]="themeMode ? 'bg-mirage text-[#fff]  border-ebonyclay':''" placeholder="Price">
               <input type="text" formControlName="total" [value]="calculateItemTotal(item)" placeholder="Total" [disabled]="true" [class]="themeMode ? 'bg-mirage  border-ebonyclay':''"   class="w-[5rem] focus:outline-none  font-bold py-4 pl-5  h-12 rounded-[.25rem]" [ngClass]="{ 'text-selago': themeMode, 'text-balihai':!themeMode }">
             </div>
             <button (click)="removeListItem(i)" type="button">
